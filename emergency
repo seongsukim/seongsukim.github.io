@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Emergency</title>
+</head>
+<style>
+    body {
+        background-color: #ffffff;
+        
+        background-repeat: repeat;
+        background-size: 30%
+    }
+    
+    div.background-module {
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        left: 0px;
+    }
+    
+    div.background_module_photo {
+        position: absolute;
+        z-index: 1;
+        top: 78px;
+        left: 0px;
+        width: 810px;
+        height: 723px;
+    }
+    
+    div.background_module_stripe {
+        position: fixed;
+        z-index: 2;
+        top: 0px;
+        left: 336px;
+        width: 324px;
+    }
+</style>
+ <h1><span style="background-color:#088A29">Emergency</span></h1>
+    
+
+<body>
+
+    <iframe src="https://player.vimeo.com/video/309792543?h=c58c0392a8" width="640" height="469" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<p><a href="https://vimeo.com/309792543">Emergency</a> from <a href="https://vimeo.com/user20778189">Seongsu  Kim</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+<br><br>
+
+<p style="font-size: 20px; font-weight: bold; margin-bottom: 9px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emergency, single channel video, 2minutes</p>
+
+
+<img src="https://kokoapple12.cafe24.com/pics/emer-01.jpg" width="950" height="650">
+<br><br>
+<img src="https://kokoapple12.cafe24.com/pics/emer-02.jpg" width="930" height="630">
+
+
+
+
+</body>
+
+</html>
