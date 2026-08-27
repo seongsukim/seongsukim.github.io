@@ -1,125 +1,82 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEONGSU KIM</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000000;
-      background-image: url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmNrMTNscGdnanJ5MmJmZm8zcjBzbTJhd2FqenlkNXpub2xuYXF6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yesCmXaohaVRiI4lYs/giphy.gif");
-      background-repeat: repeat;
-      background-size: 20%;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    /* 왼쪽 핑크색 사이드바 메뉴 (스크롤 제거 & 세로 전체 확장) */
-    .sidebar-menu {
-      width: 230px;
-      background-color: #F78181;
-      height: auto;               /* 내용에 맞춰 자동으로 늘어남 */
-      min-height: 100vh;          /* 화면 전체 높이 이상 유지 */
-      overflow: visible;          /* 스크롤바 제거 */
-      padding: 20px 16px 40px 16px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 15px;
-      line-height: 1.4;
-      color: #000000;
-      position: relative;
-      z-index: 10;
-    }
-
-    .sidebar-menu h1 {
-      font-size: 28px;
-      line-height: 1.1;
-      margin: 0 0 24px 0;
-      font-weight: bold;
-    }
-
-    .sidebar-menu a {
-      color: #0000ee;
-      text-decoration: underline;
-      display: inline-block;
-      margin-bottom: 14px;
-    }
-
-    .sidebar-menu a:hover {
-      opacity: 0.7;
-    }
-
-    .sidebar-menu p {
-      margin: 14px 0 14px 0;
-      color: #000000;
-    }
-
-    /* 메인 이미지 */
-    .main-topic-img {
-      position: absolute;
-      left: 550px;
-      top: 250px;
-      width: 700px;
-      height: 450px;
-    }
-
-    /* 하단 iframe 영상 및 지도 */
-    .vimeo-frame {
-      position: absolute;
-      top: 800px;
-      left: 50px;
-      width: 800px;
-      height: 600px;
-      border: 0;
-    }
-
-    .map-frame {
-      position: absolute;
-      top: 800px;
-      left: 950px;
-      width: 700px;
-      height: 900px;
-      border: 0;
-    }
-  </style>
+    <title>SEONGSU KIM</title>
 </head>
+
+<iframe src="https://player.vimeo.com/video/309792543" width="800" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 800px;left: 50px;"></iframe>
+
+<iframe src="https://seongsukim.github.io/map_GLasgow.jpg" width="700" height="900" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 800px;left: 950px;"></iframe>
+
+<div style="padding: 30px 00px 00px 00px;"></div>
+
+<style>
+    body {
+        background-color: #000000;
+        background-image: url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmNrMTNscGdnanJ5MmJmZm8zcjBzbTJhd2FqenlkNXpub2xuYXF6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yesCmXaohaVRiI4lYs/giphy.gif");
+        background-repeat: repeat;
+        background-size: 20%;
+    }
+    
+    div.background-module {
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        left: 0px;
+    }
+    
+    div.background_module_photo {
+        position: absolute;
+        z-index: 1;
+        top: 78px;
+        left: 0px;
+        width: 810px;
+        height: 723px;
+    }
+    
+    div.background_module_stripe {
+        position: fixed;
+        z-index: 2;
+        top: 0px;
+        left: 336px;
+        width: 324px;
+    }
+
+    img {
+        position: absolute;
+        left: 550px;
+        top: 250px;
+    }
+</style>
+
 <body>
+    <img src="https://seongsukim.github.io/main_topic.jpg" width="700" height="450">
 
-  <!-- 왼쪽 핑크색 메뉴 (스크롤 없이 전체 표시) -->
-  <aside class="sidebar-menu">
-    <h1>SEONGSU<br>KIM</h1>
+    <!-- 핑크색 박스: 왼쪽에서 살짝 떨어지고, 글자 길이만큼만 딱 맞게 끝나며 스크롤 없음 -->
+    <div style="width: 220px; background: #F78181; margin-left: 20px; margin-bottom: 50px;">
+        <div style="padding: 12px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 19px; color: #000000;">
 
-    <a href="https://seongsukim.github.io/CV.html">CV</a><br>
-    <a href="https://seongsukim.github.io/pattern in flat.html">PATTERN IN FLAT</a><br>
-    <a href="https://seongsukim.github.io/LINE.html">LINE</a><br>
-    <a href="https://seongsukim.github.io/MARINE CAMP.html">MARINE CAMP</a><br>
-    <a href="https://seongsukim.github.io/Hwang.html">Hwang-Hak Village</a><br>
-    <a href="https://seongsukim.github.io/unknown dawn.html">Unknown Dawn</a><br>
-    <a href="https://seongsukim.github.io/Relationship.html">An Anonymous Relationship</a><br>
-    <a href="https://seongsukim.github.io/Amount.html">The Amount of Dependence</a>
+            <h1>SEONGSU<br>KIM</h1>
 
-    <p>The Last Remnant</p>
-    <a href="https://seongsukim.github.io/emergency.html">Emergency</a><br>
-    <a href="https://seongsukim.github.io/first-experience.html">First experience</a>
+            <a href="https://seongsukim.github.io/CV.html">CV</a><br><br>
+            <a href="https://seongsukim.github.io/pattern in flat.html">PATTERN IN FLAT</a><br><br>
+            <a href="https://seongsukim.github.io/LINE.html">LINE</a><br><br>
+            <a href="https://seongsukim.github.io/MARINE CAMP.html">MARINE CAMP</a><br><br>
+            <a href="https://seongsukim.github.io/Hwang.html">Hwang-Hak Village</a><br><br>
+            <a href="https://seongsukim.github.io/unknown dawn.html">Unknown Dawn</a><br><br>
+            <a href="https://seongsukim.github.io/Relationship.html">An Anonymous Relationship</a><br><br>
+            <a href="https://seongsukim.github.io/Amount.html">The Amount of Dependence</a>
+            <p>The Last Remnant</p>
+            <a href="https://seongsukim.github.io/emergency.html">Emergency</a><br><br>
+            <a href="https://seongsukim.github.io/first-experience.html">First experience</a>
+            <p>Oorie</p>
+            <a href="https://seongsukim.github.io/space-man.html">Space man (On going)</a>
+            <p>Drawing etude</p>
+            <a href="https://seongsukim.github.io/contact.html">Contact</a>
 
-    <p>Oorie</p>
-    <a href="https://seongsukim.github.io/space-man.html">Space man (On going)</a>
-
-    <p>Drawing etude</p>
-    <a href="https://seongsukim.github.io/contact.html">Contact</a>
-  </aside>
-
-  <!-- 메인 토픽 이미지 -->
-  <img class="main-topic-img" src="https://seongsukim.github.io/main_topic.jpg" alt="Main Topic">
-
-  <!-- 하단 동영상 및 지도 iframe -->
-  <iframe class="vimeo-frame" src="https://player.vimeo.com/video/309792543" allowfullscreen></iframe>
-  <iframe class="map-frame" src="https://seongsukim.github.io/map_GLasgow.jpg" allowfullscreen></iframe>
+        </div>
+    </div>
 
 </body>
 </html>
