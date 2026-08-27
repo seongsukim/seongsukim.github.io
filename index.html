@@ -48,16 +48,25 @@
         left: 550px;
         top: 250px;
     }
+
+    /* 타이틀 줄간격 겹침 해결 */
+    h1.site-title {
+        font-size: 28px;
+        line-height: 1.25;
+        margin-top: 0;
+        margin-bottom: 24px;
+        font-weight: bold;
+    }
 </style>
 
 <body>
     <img src="https://seongsukim.github.io/main_topic.jpg" width="700" height="450">
 
-    <!-- 핑크색 박스: 왼쪽에서 살짝 떨어지고, 글자 길이만큼만 딱 맞게 끝나며 스크롤 없음 -->
-    <div style="width: 220px; background: #F78181; margin-left: 20px; margin-bottom: 50px;">
-        <div style="padding: 12px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 19px; color: #000000;">
+    <!-- 핑크색 박스: 위아래 여백(padding: 24px) 추가 & 타이틀 겹침 방지 -->
+    <div style="width: 230px; background: #F78181; margin-left: 20px; margin-top: 10px; margin-bottom: 60px;">
+        <div style="padding: 24px 16px 24px 16px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 19px; color: #000000;">
 
-            <h1>SEONGSU<br>KIM</h1>
+            <h1 class="site-title">SEONGSU<br>KIM</h1>
 
             <a href="https://seongsukim.github.io/CV.html">CV</a><br><br>
             <a href="https://seongsukim.github.io/pattern in flat.html">PATTERN IN FLAT</a><br><br>
