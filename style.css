@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Font Faces (Cargo Wremena & System Fonts)
    ========================================================================== */
 @font-face {
@@ -96,7 +96,7 @@ a:hover, a:active {
 }
 
 /* ==========================================================================
-   Left Map Backdrop (Split Layout: 40% left, 60% right)
+   Left Map Backdrop (Only for pages with .has-backdrop)
    ========================================================================== */
 .map-backdrop {
   position: fixed;
@@ -109,22 +109,31 @@ a:hover, a:active {
 }
 
 /* ==========================================================================
-   Main Content Layout (Right-aligned 60% width layout from Cargo)
+   Main Content Layout (Default: Left-aligned)
    ========================================================================== */
 .main-container {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start; /* 왼쪽 정렬 */
   position: relative;
   z-index: 2;
 }
 
-.content-wrapper {
+/* Backdrop(지도)이 있는 페이지만 우측 60% 영역에 배치 */
+body.has-backdrop .main-container {
+  justify-content: flex-end;
+}
+
+body.has-backdrop .content-wrapper {
   width: 60%;
+}
+
+.content-wrapper {
+  width: 100%;
   max-width: 66rem;
-  padding: 8rem 2.5rem 8rem 2.5rem;
-  margin-right: 0;
+  padding: 6rem 4rem 8rem 4rem; /* 좌측 정렬 여백 */
+  margin-left: 0;
 }
 
 /* Page Titles */
@@ -132,8 +141,9 @@ a:hover, a:active {
   font-size: 2.2rem;
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   color: rgba(0, 0, 0, 0.85);
+  text-align: left;
 }
 
 .section-title {
@@ -144,20 +154,21 @@ a:hover, a:active {
   margin-bottom: 4rem;
   color: rgba(0, 0, 0, 0.85);
   letter-spacing: -0.02em;
+  text-align: left;
 }
 
-/* Video Section */
+/* Video Section (Left-aligned) */
 .video-container {
-  margin-bottom: 4rem;
-  text-align: center;
+  margin-bottom: 3.5rem;
+  text-align: left; /* 왼쪽 정렬 */
 }
 
 .video-wrapper {
   position: relative;
   width: 100%;
   max-width: 500px;
-  margin: 0 auto 1.5rem auto;
-  aspect-ratio: 640 / 469;
+  margin: 0 0 1.5rem 0; /* 왼쪽 정렬 */
+  aspect-ratio: 640 / 480;
 }
 
 .video-wrapper iframe {
@@ -173,7 +184,8 @@ a:hover, a:active {
   font-size: 1.2rem;
   font-style: italic;
   color: rgba(0, 0, 0, 0.85);
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  text-align: left; /* 왼쪽 정렬 */
 }
 
 /* Text Content & Question List */
@@ -181,6 +193,7 @@ a:hover, a:active {
   font-size: 1.6rem;
   line-height: 1.6;
   margin-top: 3rem;
+  text-align: left;
 }
 
 .text-content p {
@@ -202,12 +215,18 @@ a:hover, a:active {
 }
 
 /* ==========================================================================
-   Image Gallery & Media Items
+   Image Gallery & Media Items (Left-aligned)
    ========================================================================== */
 .gallery-content {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  align-items: flex-start; /* 왼쪽 정렬 */
+}
+
+.image-item.full {
+  width: 100%;
+  max-width: 500px;
 }
 
 .image-item.full img {
@@ -215,12 +234,15 @@ a:hover, a:active {
   max-width: 500px;
   height: auto;
   display: block;
+  margin: 0; /* 왼쪽 정렬 */
 }
 
 .image-row {
   display: flex;
   gap: 0;
+  width: 100%;
   max-width: 500px;
+  justify-content: flex-start;
 }
 
 .image-row.col-2 img {
@@ -262,8 +284,12 @@ a:hover, a:active {
     height: 50vh;
   }
 
-  .main-container {
+  body.has-backdrop .main-container {
     justify-content: flex-start;
+  }
+
+  body.has-backdrop .content-wrapper {
+    width: 100%;
   }
 
   .content-wrapper {
@@ -282,6 +308,7 @@ a:hover, a:active {
   }
 
   .video-wrapper,
+  .image-item.full,
   .image-item.full img,
   .image-row {
     max-width: 100%;
