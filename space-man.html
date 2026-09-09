@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,6 +9,56 @@
   <link rel="preconnect" href="https://type.cargo.site" crossorigin>
   <link rel="preconnect" href="https://freight.cargo.site" crossorigin>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* 구글 지도 클릭 및 인터랙션 보장 (style.css 캐시 무관) */
+    .map-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40% !important;
+      height: 100vh;
+      z-index: 10 !important;
+      background-color: #e5e3df;
+      pointer-events: auto !important;
+    }
+
+    .map-backdrop iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border: 0 !important;
+      pointer-events: auto !important;
+    }
+
+    body.has-backdrop .main-container {
+      margin-left: 40% !important;
+      width: 60% !important;
+      justify-content: flex-start !important;
+      position: relative;
+      z-index: 5 !important;
+    }
+
+    body.has-backdrop .content-wrapper {
+      width: 100% !important;
+      max-width: 66rem !important;
+      padding: 6rem 4rem 8rem 4rem !important;
+    }
+
+    @media (max-width: 900px) {
+      .map-backdrop {
+        position: relative !important;
+        width: 100% !important;
+        height: 50vh !important;
+      }
+      body.has-backdrop .main-container {
+        margin-left: 0 !important;
+        width: 100% !important;
+      }
+      body.has-backdrop .content-wrapper {
+        padding: 2rem 1.5rem 5rem 1.5rem !important;
+      }
+    }
+  </style>
 </head>
 <body class="has-backdrop">
 
