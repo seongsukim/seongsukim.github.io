@@ -3,6 +3,16 @@
 
 <head>
     <title>SEONGSU KIM</title>
+    <script>
+        // 모바일 기기 감지 및 mobile.html 리다이렉트 (PC 버전 강제 보기(?view=desktop) 파라미터 예외 처리)
+        (function() {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768 && window.matchMedia("(orientation: portrait)").matches);
+            var isDesktopForced = window.location.search.indexOf('view=desktop') !== -1;
+            if (isMobile && !isDesktopForced) {
+                window.location.replace("mobile.html");
+            }
+        })();
+    </script>
 </head>
 
 <iframe src="https://player.vimeo.com/video/309792543" width="800" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 800px;left: 50px;"></iframe>
@@ -62,7 +72,7 @@
 <body>
     <img src="https://seongsukim.github.io/main_topic.jpg" width="700" height="450">
 
-    <!-- 핑크색 박스: 위아래 여백(padding: 24px) 추가 & 타이틀 겹침 방지 -->
+    <!-- 핑크색 박스 -->
     <div style="width: 230px; background: #F78181; margin-left: 20px; margin-top: 10px; margin-bottom: 60px;">
         <div style="padding: 24px 16px 24px 16px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 19px; color: #000000;">
 
