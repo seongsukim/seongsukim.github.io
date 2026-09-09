@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications — SEONGSU KIM</title>
+  
+  <!-- Cargo Wremena Font Preconnect -->
+  <link rel="preconnect" href="https://type.cargo.site" crossorigin>
+  <link rel="preconnect" href="https://freight.cargo.site" crossorigin>
+
+  <style>
+    /* Cargo 원본 세리프 폰트: Wremena */
+    @font-face {
+      font-display: swap;
+      font-family: "Wremena";
+      src: url("https://type.cargo.site/files/Wremena-Light.woff") format("woff");
+      font-style: normal;
+      font-weight: 200;
+    }
+    @font-face {
+      font-display: swap;
+      font-family: "Wremena";
+      src: url("https://type.cargo.site/files/Wremena-Regular.woff") format("woff");
+      font-style: normal;
+      font-weight: normal;
+    }
+    @font-face {
+      font-display: swap;
+      font-family: "Wremena";
+      src: url("https://type.cargo.site/files/Wremena-Bold.woff") format("woff");
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 80.82%;
+      background-color: #ffffff;
+      -webkit-text-size-adjust: none;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: rgba(0, 0, 0, 0.85);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.5;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* 페이지 상단 우측에 위치 (스크롤 시 따라내려오지 않고 상단에 머무름) */
+    .top-instagram {
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      z-index: 100;
+    }
+
+    .top-instagram a {
+      color: rgba(0, 0, 0, 0.85);
+      text-decoration: none;
+      font-size: 1.8rem;
+      font-weight: 400;
+      transition: opacity 0.2s ease;
+    }
+
+    .top-instagram a:hover {
+      opacity: 0.6;
+    }
+
+    /* 우측 60% 레이아웃 (Cargo right_cover) */
+    .page-layout {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end; /* 왼쪽 40% 여백, 오른쪽 60% 배치 */
+      position: relative;
+    }
+
+    .content-container {
+      width: 60%;
+      max-width: 66rem;
+      padding: 3.5rem 2.5rem 12rem 2.5rem;
+      margin-right: 2.5rem;
+    }
+
+    /* 원본 OORIE 세리프 타이틀 (Wremena 폰트) */
+    .project-title {
+      font-family: "Wremena", "Times New Roman", Georgia, serif;
+      font-size: 5.6rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.0;
+      color: rgba(0, 0, 0, 0.9);
+      margin-top: 0;
+      margin-bottom: 3.5rem;
+      text-align: left;
+    }
+
+    /* 본문 텍스트 단락 (산세리프) */
+    .body-text {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", Roboto, sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.55;
+      color: rgba(0, 0, 0, 0.85);
+      margin-bottom: 5rem;
+      text-align: left;
+    }
+
+    .body-text p {
+      margin-bottom: 2rem;
+    }
+
+    .body-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 이미지 리스트 (너비 및 비율 100% 보존) */
+    .gallery-images {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+      width: 100%;
+    }
+
+    .gallery-images img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* 모바일 반응형 */
+    @media (max-width: 900px) {
+      .top-instagram {
+        top: 2rem;
+        right: 1.5rem;
+      }
+
+      .page-layout {
+        justify-content: flex-start;
+      }
+
+      .content-container {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+        padding: 2.5rem 1.5rem 6rem 1.5rem;
+      }
+
+      .project-title {
+        font-size: 4rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .gallery-images {
+        gap: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 우측 상단 Instagram 링크 (스크롤 시 따라오지 않음) -->
+  <aside class="top-instagram">
+    <a href="https://www.instagram.com/seongsu.jpg/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </aside>
+
+  <!-- 메인 컨텐츠 영역 (우측 60% 커버) -->
+  <main class="page-layout">
+    <div class="content-container">
+
+      <!-- 원본 Wremena 세리프 타이틀 -->
+      <h2 class="project-title">OORIE</h2>
+
+      <!-- 본문 글 -->
+      <div class="body-text">
+        <p>What does it mean to delete a photograph? Can a digital file every be truly erased?<br>
+        Is anything ever gone for good?</p>
+
+        <p>We delete for specific reasons, whether it is because the images have served a temporary, utilitarian purpose, or because they are duplicates or accidents, or due to our inability to delete a memory, we settle for erasing an image.</p>
+
+        <p>This collection of images respond to the idea of the ' Recently Deleted'. These photographs were culled from the digital graveyards of our phones or hard drives, files intended for oblivion, but reconsidered and brought together to create something new. Recovered from our individual digital cemeteries, together these photographs form a strange kaleidoscope of the unseen and unstable, ascribing new meanings to forgotten images. This narrative vacillates between planes of existence and nonexistence, transcribing a collective record of our recent past and navigating a changing world through the increasingly transient image.</p>
+
+        <p>Together, we've crated this tangible memory from these discarded moments; a weird, lovely, incomplete truth that reflects the feelings, thoughts, and ideas we've shared over the past few weeks.</p>
+      </div>
+
+      <!-- 이미지 갤러리 (전체 6장 순서대로) -->
+      <div class="gallery-images">
+        <img 
+          src="https://freight.cargo.site/t/original/i/255f6834acd6cbb4f3139d2f963bc3a9e94de0afad8fd351ef8ca88b486489c9/IMG_8217.jpg" 
+          alt="OORIE photo 1" 
+          loading="lazy">
+        
+        <img 
+          src="https://freight.cargo.site/t/original/i/68b4cffffd5c05fcc698aa51b0296998226d2336bc08dfedfb2f23efd2dfd1a8/IMG_8219.jpg" 
+          alt="OORIE photo 2" 
+          loading="lazy">
+        
+        <img 
+          src="https://freight.cargo.site/t/original/i/908ff25e877e68e8ddd9b341c21046874c346f5836d0ff2cb5a4b0c580251752/IMG_8220.jpg" 
+          alt="OORIE photo 3" 
+          loading="lazy">
+        
+        <img 
+          src="https://freight.cargo.site/t/original/i/32e140628fa17f6bab83bbea9a6ebd9a610a58a04ecc19b892806a828b73f43a/IMG_8221.jpg" 
+          alt="OORIE photo 4" 
+          loading="lazy">
+        
+        <img 
+          src="https://freight.cargo.site/t/original/i/6c788f4ec853aa48b495abc862e06822969fa4c8c7893f4508b9e928db7b5f91/IMG_8222.jpg" 
+          alt="OORIE photo 5" 
+          loading="lazy">
+        
+        <img 
+          src="https://freight.cargo.site/t/original/i/68b642ad457736b38991da28a934dfe012603f197e816da235a8e05a71494bf1/IMG_8223.jpg" 
+          alt="OORIE photo 6" 
+          loading="lazy">
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
