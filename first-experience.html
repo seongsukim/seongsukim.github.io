@@ -1,44 +1,209 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Experience - SEONGSU KIM</title>
+  <title>First Experience — SEONGSU KIM</title>
   
-  <!-- Font Preconnect & Stylesheet -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://type.cargo.site" crossorigin>
   <link rel="preconnect" href="https://freight.cargo.site" crossorigin>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    @font-face {
+      font-display: swap;
+      font-family: "Wremena";
+      src: url("https://type.cargo.site/files/Wremena-Regular.woff") format("woff");
+      font-style: normal;
+      font-weight: normal;
+    }
+    @font-face {
+      font-display: swap;
+      font-family: "Wremena";
+      src: url("https://type.cargo.site/files/Wremena-Bold.woff") format("woff");
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 80.82%;
+      background-color: #ffffff;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: rgba(0, 0, 0, 0.85);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.4;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* 우측 상단 Instagram 고정 링크 */
+    .top-instagram {
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      z-index: 100;
+    }
+
+    .top-instagram a {
+      color: rgba(0, 0, 0, 0.85);
+      text-decoration: none;
+      font-size: 1.8rem;
+      font-weight: 400;
+      transition: opacity 0.2s ease;
+    }
+
+    .top-instagram a:hover {
+      opacity: 0.6;
+    }
+
+    /* 오른쪽 60% 레이아웃 (Cargo right_cover) */
+    .page-layout {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end; /* 왼쪽 40%는 여백, 오른쪽 60%에 콘텐츠 배치 */
+      position: relative;
+    }
+
+    .content-container {
+      width: 60%;
+      max-width: 66rem;
+      padding: 4rem 2.5rem 10rem 2.5rem;
+      margin-right: 2.5rem;
+    }
+
+    /* 페이지 제목 */
+    .page-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 4.5rem;
+      line-height: 1.2;
+    }
+
+    /* 비디오 박스 (가운데 정렬) */
+    .video-section {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 640 / 480;
+      margin: 0 auto;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 캡션 (가운데 정렬 + 이탤릭) */
+    .caption {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: rgba(0, 0, 0, 0.85);
+      margin-top: 1.8rem;
+      margin-bottom: 6rem;
+      line-height: 1.5;
+    }
+
+    /* 하단 이미지 */
+    .image-section {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .image-section img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 모바일 반응형 */
+    @media (max-width: 900px) {
+      .top-instagram {
+        position: absolute;
+        top: 2rem;
+        right: 1.5rem;
+      }
+
+      .page-layout {
+        justify-content: flex-start;
+      }
+
+      .content-container {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+        padding: 3rem 1.5rem 6rem 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .caption {
+        margin-bottom: 4rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- 우측 상단 Instagram 링크 -->
+  <aside class="top-instagram">
+    <a href="https://www.instagram.com/seongsu.jpg/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </aside>
 
+  <!-- 오른쪽 60% 콘텐츠 영역 -->
+  <main class="page-layout">
+    <div class="content-container">
 
-  <!-- Main Content Container -->
-  <main class="main-container">
-    <div class="content-wrapper">
-      
-      <!-- Title -->
+      <!-- 상단 제목 -->
       <h1 class="page-title">First Experience</h1>
 
-      <!-- Video Section (Left-aligned) -->
-      <div class="video-container">
+      <!-- 비메오 동영상 (가운데 정렬) -->
+      <div class="video-section">
         <div class="video-wrapper">
           <iframe 
-            src="https://player.vimeo.com/video/362550388?title=0&byline=0&portrait=0" 
+            src="https://player.vimeo.com/video/362550388" 
             frameborder="0" 
             allow="autoplay; fullscreen; picture-in-picture" 
             allowfullscreen>
           </iframe>
         </div>
-        <p class="video-caption">It is practice about how to rolling up cigarettes for 18 minutes.</p>
       </div>
 
-      <!-- Image Gallery (Left-aligned) -->
-      <div class="gallery-content">
-        <div class="image-item full">
-          <img src="https://freight.cargo.site/w/1000/q/75/i/523c70305224af8cadf7481f9619ed8c9c56021d6a576bdf962273bbc59d8651/Screenshot-2019-05-07-at-00.45.30.png" alt="Screenshot First Experience" loading="lazy">
-        </div>
+      <!-- 비디오 설명 캡션 (가운데 정렬, 이탤릭) -->
+      <p class="caption">It is practice about how to rolling up cigarettes for 18 minutes.</p>
+
+      <!-- 하단 스크린샷 이미지 -->
+      <div class="image-section">
+        <img 
+          src="https://freight.cargo.site/t/original/i/523c70305224af8cadf7481f9619ed8c9c56021d6a576bdf962273bbc59d8651/Screenshot-2019-05-07-at-00.45.30.png" 
+          alt="Screenshot 2019-05-07" 
+          loading="lazy">
       </div>
 
     </div>
