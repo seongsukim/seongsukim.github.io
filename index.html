@@ -64,7 +64,7 @@
       width: calc(var(--unit) * 2);
       min-height: 100vh;
       padding: var(--gap);
-      background: rgba(220, 220, 220, .82);
+      background: linear-gradient(180deg, rgba(238,238,238,.92) 0%, rgba(199,199,199,.82) 100%);
     }
 
     .identity { margin-bottom: 36px; font-size: 15px; line-height: 1.15; }
@@ -76,7 +76,7 @@
       padding: 9px 8px;
       border: 2px solid #000;
       border-radius: 0;
-      background: var(--yellow);
+      background: linear-gradient(90deg, var(--yellow) 0%, #fffca1 100%);
       color: #000;
       font: inherit;
       font-weight: bold;
@@ -84,7 +84,7 @@
       cursor: pointer;
     }
 
-    .nav-box { padding: 14px 12px 20px; background: var(--pink); }
+    .nav-box { padding: 14px 12px 20px; background: linear-gradient(145deg, #ffd9d9 0%, var(--pink) 58%, #ef6565 100%); }
     .nav-box a { display: block; width: max-content; max-width: 100%; margin-bottom: 14px; font-size: 16px; line-height: 1.15; }
     .nav-box a:last-child { margin-bottom: 0; }
 
@@ -100,7 +100,7 @@
     }
 
     .module { align-self: start; }
-    .title-module { grid-column: 1 / -1; padding: 16px 18px 19px; background: var(--yellow); }
+    .title-module { grid-column: 1 / -1; padding: 16px 18px 19px; background: linear-gradient(105deg, var(--yellow) 0%, #fff86b 62%, rgba(255,255,255,.92) 100%); }
 
     h1 {
       max-width: 650px;
@@ -112,22 +112,22 @@
       text-transform: uppercase;
     }
 
-    .intro-module { grid-column: 1 / span 3; padding: 16px 18px; background: rgba(255,255,255,.94); font-size: 20px; line-height: 1.28; }
+    .intro-module { grid-column: 1 / span 3; padding: 16px 18px; background: linear-gradient(100deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.78) 72%, rgba(140,255,152,.7) 100%); font-size: 20px; line-height: 1.28; }
     .intro-module p { margin: 0; }
-    .index-module { grid-column: 4; padding: 12px; background: var(--green); font-size: 12px; line-height: 1.25; }
+    .index-module { grid-column: 4; padding: 12px; background: linear-gradient(150deg, #e4ffe7 0%, var(--green) 55%, #55ee6a 100%); font-size: 12px; line-height: 1.25; }
     .index-module strong { display: block; margin-bottom: 10px; font-size: 17px; }
 
     .image-module { grid-column: 1 / -1; background: #fff; }
     .image-module img { display: block; width: 100%; height: auto; }
     .caption { padding: 7px 9px 9px; font-size: 11px; }
 
-    .works-heading { grid-column: 1 / span 2; padding: 10px 12px; background: var(--yellow); }
+    .works-heading { grid-column: 1 / span 2; padding: 10px 12px; background: linear-gradient(90deg, var(--yellow), #fffca6); }
     .works-heading h2 { margin: 0; font-size: 31px; line-height: 1; text-transform: uppercase; }
 
     .work-link { min-height: var(--unit); padding: 12px; font-size: 16px; line-height: 1.1; }
-    .work-link:nth-of-type(3n+1) { background: var(--pink); }
-    .work-link:nth-of-type(3n+2) { background: rgba(255,255,255,.94); }
-    .work-link:nth-of-type(3n) { background: var(--green); }
+    .work-link:nth-of-type(3n+1) { background: linear-gradient(145deg, #ffdada, var(--pink) 60%, #ee6969); }
+    .work-link:nth-of-type(3n+2) { background: linear-gradient(145deg, rgba(255,255,255,.97), rgba(230,230,230,.88)); }
+    .work-link:nth-of-type(3n) { background: linear-gradient(145deg, #e4ffe7, var(--green) 60%, #62eb72); }
     .work-link span { display: block; margin-bottom: 32px; font-size: 11px; text-decoration: none; }
 
     .video-module { grid-column: 1 / span 3; background: #000; }
@@ -144,7 +144,7 @@
     .map-controls button { min-width: 34px; height: 34px; padding: 0 8px; border: 1px solid #000; border-radius: 0; background: rgba(255,255,255,.92); color: #000; font: bold 14px Arial, Helvetica, sans-serif; cursor: pointer; }
     .map-controls button:hover { color: #fff; background: #000; }
 
-    .footer-module { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 20px; padding: 12px; background: var(--grey); font-size: 12px; }
+    .footer-module { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 20px; padding: 12px; background: linear-gradient(90deg, rgba(238,238,238,.94), rgba(190,190,190,.84)); font-size: 12px; }
 
     @media (max-width: 1200px) {
       .page-grid { grid-template-columns: calc(var(--unit) * 2) minmax(0, 1fr); }

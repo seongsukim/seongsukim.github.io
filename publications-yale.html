@@ -13,18 +13,18 @@
     a:hover { color:#fff; background:#000; }
     a:focus-visible { outline:3px solid #000; outline-offset:2px; }
     .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
-    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:var(--grey); }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:linear-gradient(180deg,rgba(238,238,238,.96),rgba(194,194,194,.88)); }
     .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
     .identity strong { display:block; font-size:20px; }
-    .nav-box { padding:14px 12px 20px; background:var(--pink); }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#ffd9d9 0%,var(--pink) 58%,#ed6868 100%); }
     .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
     .nav-box a:last-child { margin-bottom:0; }
     main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
-    .title { grid-column:1/-1; padding:16px 18px 20px; background:var(--yellow); }
+    .title { grid-column:1/-1; padding:16px 18px 20px; background:linear-gradient(105deg,var(--yellow) 0%,#fff971 64%,#fffdd0 100%); }
     h1 { margin:0; font-size:clamp(72px,8vw,124px); font-weight:800; line-height:.78; letter-spacing:-.075em; text-transform:uppercase; }
-    .back { grid-column:1/-1; padding:12px; background:rgba(255,255,255,.94); text-align:right; }
-    .question { grid-column:1/span 2; padding:16px; background:var(--pink); font-size:27px; font-weight:bold; line-height:1.05; }
-    .details { grid-column:3/-1; padding:16px; background:var(--green); font-size:13px; line-height:1.4; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(226,255,230,.88)); text-align:right; }
+    .question { grid-column:1/span 2; padding:16px; background:linear-gradient(145deg,#ffdede 0%,var(--pink) 55%,#eb6675 100%); font-size:27px; font-weight:bold; line-height:1.05; }
+    .details { grid-column:3/-1; padding:16px; background:linear-gradient(155deg,#e6ffe8 0%,var(--green) 55%,#5fea70 100%); font-size:13px; line-height:1.4; }
     .details p { margin:0 0 16px; }
     .details p:last-child { margin-bottom:0; }
     figure { margin:0; background:#fff; }
@@ -32,7 +32,7 @@
     figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; font-size:11px; }
     .wide { grid-column:1/-1; }
     .half { grid-column:span 2; }
-    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:var(--grey); font-size:12px; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:linear-gradient(90deg,rgba(239,239,239,.96),rgba(188,188,188,.86)); font-size:12px; }
     .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
     .lightbox[open] { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; align-items:center; }
     .lightbox::backdrop { background:rgba(0,0,0,.94); }
@@ -66,7 +66,7 @@
     <aside class="sidebar">
       <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
       <nav class="nav-box" aria-label="Main navigation">
-        <a href="index.html">Home</a>
+        <a href="index-sheep.html">Home</a>
         <a href="CV.html">CV</a>
         <a href="pattern%20in%20flat.html">Pattern in Flat</a>
         <a href="LINE.html">Line</a>
@@ -85,7 +85,7 @@
 
     <main>
       <header class="title"><h1>Oorie</h1></header>
-      <div class="back"><a href="index.html">Back to home</a></div>
+      <div class="back"><a href="index-sheep.html">Back to home</a></div>
       <section class="question">What does it mean to delete a photograph?<br><br>Can a digital file ever be truly erased?</section>
       <section class="details">
         <p>We delete images because they have served a temporary purpose, because they are duplicates or accidents, or because erasing an image feels easier than erasing a memory.</p>
