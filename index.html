@@ -1,101 +1,358 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>SEONGSU KIM</title>
-    <script>
-        // 모바일 기기 감지 및 mobile.html 리다이렉트 (PC 버전 강제 보기(?view=desktop) 파라미터 예외 처리)
-        (function() {
-            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768 && window.matchMedia("(orientation: portrait)").matches);
-            var isDesktopForced = window.location.search.indexOf('view=desktop') !== -1;
-            if (isMobile && !isDesktopForced) {
-                window.location.replace("mobile.html");
-            }
-        })();
-    </script>
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The website of visual artist Seongsu Kim.">
+  <title>SEONGSU KIM</title>
+  <style>
+    :root {
+      --unit: 162px;
+      --gap: 12px;
+      --yellow: #fff800;
+      --pink: #f78181;
+      --green: #8cff98;
+      --grey: rgba(220, 220, 220, .9);
+    }
 
-<iframe src="https://player.vimeo.com/video/309792543" width="800" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 800px;left: 50px;"></iframe>
+    *, *::before, *::after { box-sizing: border-box; }
 
-<iframe src="https://seongsukim.github.io/map_GLasgow.jpg" width="700" height="900" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 800px;left: 950px;"></iframe>
+    html { font-size: 16px; }
 
-<div style="padding: 30px 00px 00px 00px;"></div>
-
-<style>
     body {
-        background-color: #000000;
-        background-image: url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmNrMTNscGdnanJ5MmJmZm8zcjBzbTJhd2FqenlkNXpub2xuYXF6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yesCmXaohaVRiI4lYs/giphy.gif");
-        background-repeat: repeat;
-        background-size: 20%;
-    }
-    
-    div.background-module {
-        position: absolute;
-        z-index: 1;
-        top: 0px;
-        left: 0px;
-    }
-    
-    div.background_module_photo {
-        position: absolute;
-        z-index: 1;
-        top: 78px;
-        left: 0px;
-        width: 810px;
-        height: 723px;
-    }
-    
-    div.background_module_stripe {
-        position: fixed;
-        z-index: 2;
-        top: 0px;
-        left: 336px;
-        width: 324px;
+      min-height: 100vh;
+      margin: 0;
+      color: #000;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #000;
+      background-image: url("https://media.giphy.com/media/yesCmXaohaVRiI4lYs/giphy.gif");
+      background-repeat: repeat;
+      background-size: 320px auto;
+      background-position: top left;
+      background-attachment: fixed;
     }
 
-    img {
-        position: absolute;
-        left: 550px;
-        top: 250px;
+    body.animations-paused { background-image: none; background-color: #c9c9c9; }
+
+    a { color: #000; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: #fff; background: #000; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: calc(var(--unit) * 2) minmax(0, calc(var(--unit) * 4 + var(--gap) * 3)) minmax(420px, 1fr);
+      gap: var(--gap);
+      width: 100%;
+      min-width: 100%;
+      align-items: start;
+      background: transparent;
     }
 
-    /* 타이틀 줄간격 겹침 해결 */
-    h1.site-title {
-        font-size: 28px;
-        line-height: 1.25;
-        margin-top: 0;
-        margin-bottom: 24px;
-        font-weight: bold;
+    .stripe {
+      position: fixed;
+      z-index: 0;
+      inset: 0 auto 0 calc(var(--unit) * 2 + var(--gap));
+      width: calc(var(--unit) * 2);
+      background: rgba(255, 255, 255, .16);
+      pointer-events: none;
     }
-</style>
 
+    .sidebar {
+      position: sticky;
+      z-index: 2;
+      top: 0;
+      width: calc(var(--unit) * 2);
+      min-height: 100vh;
+      padding: var(--gap);
+      background: rgba(220, 220, 220, .82);
+    }
+
+    .identity { margin-bottom: 36px; font-size: 15px; line-height: 1.15; }
+    .identity strong { display: block; font-size: 20px; }
+
+    .pause-button {
+      width: 100%;
+      margin: 0 0 var(--gap);
+      padding: 9px 8px;
+      border: 2px solid #000;
+      border-radius: 0;
+      background: var(--yellow);
+      color: #000;
+      font: inherit;
+      font-weight: bold;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .nav-box { padding: 14px 12px 20px; background: var(--pink); }
+    .nav-box a { display: block; width: max-content; max-width: 100%; margin-bottom: 14px; font-size: 16px; line-height: 1.15; }
+    .nav-box a:last-child { margin-bottom: 0; }
+
+    main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, var(--unit));
+      grid-auto-flow: row dense;
+      gap: var(--gap);
+      width: calc(var(--unit) * 4 + var(--gap) * 3);
+      padding: var(--gap) 0 120px;
+    }
+
+    .module { align-self: start; }
+    .title-module { grid-column: 1 / -1; padding: 16px 18px 19px; background: var(--yellow); }
+
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(58px, 7vw, 116px);
+      font-weight: 800;
+      line-height: .78;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+    }
+
+    .intro-module { grid-column: 1 / span 3; padding: 16px 18px; background: rgba(255,255,255,.94); font-size: 20px; line-height: 1.28; }
+    .intro-module p { margin: 0; }
+    .index-module { grid-column: 4; padding: 12px; background: var(--green); font-size: 12px; line-height: 1.25; }
+    .index-module strong { display: block; margin-bottom: 10px; font-size: 17px; }
+
+    .image-module { grid-column: 1 / -1; background: #fff; }
+    .image-module img { display: block; width: 100%; height: auto; }
+    .caption { padding: 7px 9px 9px; font-size: 11px; }
+
+    .works-heading { grid-column: 1 / span 2; padding: 10px 12px; background: var(--yellow); }
+    .works-heading h2 { margin: 0; font-size: 31px; line-height: 1; text-transform: uppercase; }
+
+    .work-link { min-height: var(--unit); padding: 12px; font-size: 16px; line-height: 1.1; }
+    .work-link:nth-of-type(3n+1) { background: var(--pink); }
+    .work-link:nth-of-type(3n+2) { background: rgba(255,255,255,.94); }
+    .work-link:nth-of-type(3n) { background: var(--green); }
+    .work-link span { display: block; margin-bottom: 32px; font-size: 11px; text-decoration: none; }
+
+    .video-module { grid-column: 1 / span 3; background: #000; }
+    .video-frame { position: relative; aspect-ratio: 4 / 3; }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-module .caption { background: #fff; }
+
+    .map-module { position: sticky; top: var(--gap); z-index: 1; grid-column: 3; align-self: start; margin: var(--gap) var(--gap) 0 0; background: #fff; }
+    .map-viewport { position: relative; height: calc(100vh - 54px); min-height: 480px; overflow: hidden; background: #000; cursor: grab; touch-action: none; }
+    .map-viewport.is-dragging { cursor: grabbing; }
+    .map-viewport img { display: block; width: 100%; max-width: none; height: auto; transform-origin: 0 0; user-select: none; -webkit-user-drag: none; will-change: transform; }
+    .map-module .caption { display: flex; justify-content: space-between; gap: 20px; }
+    .map-controls { position: absolute; z-index: 2; top: 10px; right: 10px; display: flex; gap: 4px; }
+    .map-controls button { min-width: 34px; height: 34px; padding: 0 8px; border: 1px solid #000; border-radius: 0; background: rgba(255,255,255,.92); color: #000; font: bold 14px Arial, Helvetica, sans-serif; cursor: pointer; }
+    .map-controls button:hover { color: #fff; background: #000; }
+
+    .footer-module { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 20px; padding: 12px; background: var(--grey); font-size: 12px; }
+
+    @media (max-width: 1200px) {
+      .page-grid { grid-template-columns: calc(var(--unit) * 2) minmax(0, 1fr); }
+      .map-module { position: relative; top: auto; grid-column: 2; grid-row: 2; margin: 0 var(--gap) var(--gap) 0; }
+    }
+
+    @media (max-width: 900px) {
+      body { background-size: 280px auto; }
+      .page-grid { display: block; width: 100%; min-width: 0; }
+      .stripe { display: none; }
+      .sidebar { position: relative; width: 100%; min-height: 0; }
+      .identity { margin-bottom: 18px; }
+      .nav-box { display: block; }
+      .nav-box a { display: block; margin: 0 0 14px; width: max-content; max-width: 100%; }
+      .nav-box a:last-child { margin-bottom: 0; }
+      main { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; padding: var(--gap); }
+      .title-module, .image-module, .footer-module { grid-column: 1 / -1; }
+      .intro-module { grid-column: 1 / -1; }
+      .index-module { grid-column: 1 / -1; }
+      .works-heading { grid-column: 1 / -1; }
+      .video-module { grid-column: 1 / -1; }
+      .map-module { position: relative; grid-column: 1; grid-row: auto; width: auto; margin: 0 var(--gap) var(--gap); }
+      .map-viewport { height: min(80vh, 760px); min-height: 420px; }
+      h1 { font-size: clamp(54px, 18vw, 105px); }
+    }
+
+    @media (max-width: 520px) {
+      body { background-size: 240px auto; }
+      main { grid-template-columns: 1fr; }
+      .module, .work-link, .map-module { grid-column: 1 !important; }
+      .work-link { min-height: 130px; }
+      .footer-module { flex-direction: column; }
+    }
+
+  </style>
+</head>
 <body>
-    <img src="https://seongsukim.github.io/main_topic.jpg" width="700" height="450">
+  <div class="stripe" aria-hidden="true"></div>
+  <div class="page-grid">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <button class="pause-button" type="button" aria-pressed="false">Pause animations</button>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="CV.html">CV</a>
+        <a href="pattern%20in%20flat.html">Pattern in Flat</a>
+        <a href="LINE.html">Line</a>
+        <a href="MARINE%20CAMP.html">Marine Camp</a>
+        <a href="Hwang.html">Hwang-Hak Village</a>
+        <a href="unknown%20dawn.html">Unknown Dawn</a>
+        <a href="Relationship.html">An Anonymous Relationship</a>
+        <a href="Amount-yale.html">The Amount of Dependence</a>
+        <a href="emergency.html">Emergency</a>
+        <a href="first-experience.html">First Experience</a>
+        <a href="publications-yale.html">Oorie</a>
+        <a href="space-man-yale.html">Space Man</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </aside>
 
-    <!-- 핑크색 박스 -->
-    <div style="width: 230px; background: #F78181; margin-left: 20px; margin-top: 10px; margin-bottom: 60px;">
-        <div style="padding: 24px 16px 24px 16px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 19px; color: #000000;">
+    <main>
+      <section class="module title-module">
+        <h1>Seongsu<br>Kim</h1>
+      </section>
 
-            <h1 class="site-title">SEONGSU<br>KIM</h1>
+      <section class="module intro-module">
+        <p>This is the website of visual artist <strong>Seongsu Kim</strong>. It brings together selected projects, moving-image works, publications and ongoing studies.</p>
+      </section>
 
-            <a href="https://seongsukim.github.io/CV.html">CV</a><br><br>
-            <a href="https://seongsukim.github.io/pattern in flat.html">PATTERN IN FLAT</a><br><br>
-            <a href="https://seongsukim.github.io/LINE.html">LINE</a><br><br>
-            <a href="https://seongsukim.github.io/MARINE CAMP.html">MARINE CAMP</a><br><br>
-            <a href="https://seongsukim.github.io/Hwang.html">Hwang-Hak Village</a><br><br>
-            <a href="https://seongsukim.github.io/unknown dawn.html">Unknown Dawn</a><br><br>
-            <a href="https://seongsukim.github.io/Relationship.html">An Anonymous Relationship</a><br><br>
-            <a href="https://seongsukim.github.io/Amount.html">The Amount of Dependence</a>
-            <p>The Last Remnant</p>
-            <a href="https://seongsukim.github.io/emergency.html">Emergency</a><br><br>
-            <a href="https://seongsukim.github.io/first-experience.html">First experience</a><br><br>
-            <a href="https://seongsukim.github.io/publications.html">Oorie</a><br><br>
-            <a href="https://seongsukim.github.io/space-man.html">Space man (On going)</a>
-            <p>Drawing etude</p>
-            <a href="https://seongsukim.github.io/contact.html">Contact</a>
+      <aside class="module index-module">
+        <strong>On this page</strong>
+        <a href="#selected-works">Selected works</a><br>
+        <a href="#moving-image">Moving image</a>
+      </aside>
 
+      <figure class="module image-module">
+        <img src="main_topic.jpg" alt="Selected work by Seongsu Kim" width="700" height="450">
+        <figcaption class="caption">Selected work / Seongsu Kim</figcaption>
+      </figure>
+
+      <section class="module works-heading" id="selected-works">
+        <h2>Selected works</h2>
+      </section>
+
+      <a class="module work-link" href="pattern%20in%20flat.html"><span>01</span>Pattern in Flat</a>
+      <a class="module work-link" href="LINE.html"><span>02</span>Line</a>
+      <a class="module work-link" href="MARINE%20CAMP.html"><span>03</span>Marine Camp</a>
+      <a class="module work-link" href="Hwang.html"><span>04</span>Hwang-Hak Village</a>
+      <a class="module work-link" href="unknown%20dawn.html"><span>05</span>Unknown Dawn</a>
+      <a class="module work-link" href="Relationship.html"><span>06</span>An Anonymous Relationship</a>
+      <a class="module work-link" href="Amount-yale.html"><span>07</span>The Amount of Dependence</a>
+      <a class="module work-link" href="space-man-yale.html"><span>08</span>Space Man (Ongoing)</a>
+
+      <section class="module video-module" id="moving-image">
+        <div class="video-frame">
+          <iframe src="https://player.vimeo.com/video/309792543" title="Moving-image work by Seongsu Kim" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
-    </div>
+        <div class="caption">Moving image / Vimeo</div>
+      </section>
 
+      <footer class="module footer-module">
+        <span>© Seongsu Kim</span>
+        <a href="contact.html">Contact</a>
+      </footer>
+    </main>
+
+    <figure class="map-module">
+      <div class="map-viewport" tabindex="0" aria-label="Interactive Map of Study. Use the mouse wheel to zoom and drag to move.">
+        <img class="zoomable-map" src="map_GLasgow.jpg" alt="Map of Study" width="700" height="900" draggable="false">
+        <div class="map-controls" aria-label="Map controls">
+          <button type="button" data-map-action="zoom-in" aria-label="Zoom in">+</button>
+          <button type="button" data-map-action="zoom-out" aria-label="Zoom out">−</button>
+          <button type="button" data-map-action="reset" aria-label="Reset map">Reset</button>
+        </div>
+      </div>
+      <figcaption class="caption"><span>Map of Study · Wheel to zoom / Drag to move</span><span>Glasgow</span></figcaption>
+    </figure>
+  </div>
+
+  <script>
+    const pauseButton = document.querySelector('.pause-button');
+    pauseButton.addEventListener('click', () => {
+      const paused = document.body.classList.toggle('animations-paused');
+      pauseButton.textContent = paused ? 'Play animations' : 'Pause animations';
+      pauseButton.setAttribute('aria-pressed', String(paused));
+    });
+
+    const mapViewport = document.querySelector('.map-viewport');
+    const mapImage = document.querySelector('.zoomable-map');
+    let mapScale = 1;
+    let mapX = 0;
+    let mapY = 0;
+    let dragging = false;
+    let lastPointerX = 0;
+    let lastPointerY = 0;
+
+    function clampMapPosition() {
+      const scaledWidth = mapImage.offsetWidth * mapScale;
+      const scaledHeight = mapImage.offsetHeight * mapScale;
+      const minX = Math.min(0, mapViewport.clientWidth - scaledWidth);
+      const minY = Math.min(0, mapViewport.clientHeight - scaledHeight);
+      mapX = Math.min(0, Math.max(minX, mapX));
+      mapY = Math.min(0, Math.max(minY, mapY));
+    }
+
+    function renderMap() {
+      clampMapPosition();
+      mapImage.style.transform = `translate3d(${mapX}px, ${mapY}px, 0) scale(${mapScale})`;
+    }
+
+    function zoomMap(nextScale, focalX = mapViewport.clientWidth / 2, focalY = mapViewport.clientHeight / 2) {
+      const oldScale = mapScale;
+      mapScale = Math.min(6, Math.max(1, nextScale));
+      const imageX = (focalX - mapX) / oldScale;
+      const imageY = (focalY - mapY) / oldScale;
+      mapX = focalX - imageX * mapScale;
+      mapY = focalY - imageY * mapScale;
+      renderMap();
+    }
+
+    mapViewport.addEventListener('wheel', (event) => {
+      event.preventDefault();
+      const bounds = mapViewport.getBoundingClientRect();
+      const factor = event.deltaY < 0 ? 1.14 : 1 / 1.14;
+      zoomMap(mapScale * factor, event.clientX - bounds.left, event.clientY - bounds.top);
+    }, { passive: false });
+
+    mapViewport.addEventListener('pointerdown', (event) => {
+      if (event.target.closest('.map-controls')) return;
+      dragging = true;
+      lastPointerX = event.clientX;
+      lastPointerY = event.clientY;
+      mapViewport.classList.add('is-dragging');
+      mapViewport.setPointerCapture(event.pointerId);
+    });
+
+    mapViewport.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+      mapX += event.clientX - lastPointerX;
+      mapY += event.clientY - lastPointerY;
+      lastPointerX = event.clientX;
+      lastPointerY = event.clientY;
+      renderMap();
+    });
+
+    function endMapDrag(event) {
+      dragging = false;
+      mapViewport.classList.remove('is-dragging');
+      if (mapViewport.hasPointerCapture(event.pointerId)) mapViewport.releasePointerCapture(event.pointerId);
+    }
+
+    mapViewport.addEventListener('pointerup', endMapDrag);
+    mapViewport.addEventListener('pointercancel', endMapDrag);
+
+    document.querySelector('.map-controls').addEventListener('click', (event) => {
+      const action = event.target.dataset.mapAction;
+      if (action === 'zoom-in') zoomMap(mapScale * 1.35);
+      if (action === 'zoom-out') zoomMap(mapScale / 1.35);
+      if (action === 'reset') {
+        mapScale = 1;
+        mapX = 0;
+        mapY = 0;
+        renderMap();
+      }
+    });
+
+    mapImage.addEventListener('load', renderMap);
+    window.addEventListener('resize', renderMap);
+  </script>
 </body>
 </html>

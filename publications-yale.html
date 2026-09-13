@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Oorie, a publication project by Seongsu Kim.">
+  <title>OORIE — SEONGSU KIM</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --yellow:#fff800; --pink:#f78181; --green:#8cff98; --grey:rgba(220,220,220,.84); }
+    *,*::before,*::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:var(--grey); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .nav-box { padding:14px 12px 20px; background:var(--pink); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:16px 18px 20px; background:var(--yellow); }
+    h1 { margin:0; font-size:clamp(72px,8vw,124px); font-weight:800; line-height:.78; letter-spacing:-.075em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:rgba(255,255,255,.94); text-align:right; }
+    .question { grid-column:1/span 2; padding:16px; background:var(--pink); font-size:27px; font-weight:bold; line-height:1.05; }
+    .details { grid-column:3/-1; padding:16px; background:var(--green); font-size:13px; line-height:1.4; }
+    .details p { margin:0 0 16px; }
+    .details p:last-child { margin-bottom:0; }
+    figure { margin:0; background:#fff; }
+    figure img { display:block; width:100%; height:auto; cursor:zoom-in; }
+    figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; font-size:11px; }
+    .wide { grid-column:1/-1; }
+    .half { grid-column:span 2; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:var(--grey); font-size:12px; }
+    .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
+    .lightbox[open] { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; align-items:center; }
+    .lightbox::backdrop { background:rgba(0,0,0,.94); }
+    .lightbox-image { display:block; max-width:100%; max-height:calc(100vh - 86px); margin:auto; object-fit:contain; }
+    .lightbox-caption { position:fixed; left:20px; right:20px; bottom:14px; color:#fff; font-size:12px; text-align:center; }
+    .lightbox button { border:0; border-radius:0; background:transparent; color:#fff; font:32px Arial,Helvetica,sans-serif; cursor:pointer; }
+    .lightbox button:hover { color:var(--yellow); }
+    .lightbox-close { position:fixed; top:12px; right:18px; z-index:2; width:44px; height:44px; font-size:30px!important; }
+    .lightbox-prev,.lightbox-next { align-self:stretch; }
+    @media (max-width:900px) {
+      .layout { display:block; width:100%; min-width:0; }
+      .sidebar { position:relative; width:100%; min-height:0; }
+      .identity { margin-bottom:18px; }
+      main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); }
+      .title,.back,.question,.details,.wide,.footer { grid-column:1/-1; }
+      .half { grid-column:span 1; }
+      h1 { font-size:clamp(70px,20vw,120px); }
+    }
+    @media (max-width:520px) {
+      main { grid-template-columns:1fr; }
+      .title,.back,.question,.details,.wide,.half,.footer { grid-column:1; }
+      .back { text-align:left; }
+      .question { font-size:23px; }
+      .lightbox[open] { grid-template-columns:44px minmax(0,1fr) 44px; }
+      .lightbox-prev,.lightbox-next { font-size:25px!important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index-sheep.html">Home</a>
+        <a href="CV.html">CV</a>
+        <a href="pattern%20in%20flat.html">Pattern in Flat</a>
+        <a href="LINE.html">Line</a>
+        <a href="MARINE%20CAMP.html">Marine Camp</a>
+        <a href="Hwang.html">Hwang-Hak Village</a>
+        <a href="unknown%20dawn.html">Unknown Dawn</a>
+        <a href="Relationship.html">An Anonymous Relationship</a>
+        <a href="Amount-yale.html">The Amount of Dependence</a>
+        <a href="emergency.html">Emergency</a>
+        <a href="first-experience.html">First Experience</a>
+        <a href="publications-yale.html" aria-current="page">Oorie</a>
+        <a href="space-man-yale.html">Space Man</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="title"><h1>Oorie</h1></header>
+      <div class="back"><a href="index-sheep.html">Back to home</a></div>
+      <section class="question">What does it mean to delete a photograph?<br><br>Can a digital file ever be truly erased?</section>
+      <section class="details">
+        <p>We delete images because they have served a temporary purpose, because they are duplicates or accidents, or because erasing an image feels easier than erasing a memory.</p>
+        <p>These photographs were recovered from the digital graveyards of phones and hard drives. Brought together, they form a strange record of the unseen, unstable and recently past.</p>
+      </section>
+
+      <figure class="wide"><img src="https://freight.cargo.site/t/original/i/255f6834acd6cbb4f3139d2f963bc3a9e94de0afad8fd351ef8ca88b486489c9/IMG_8217.jpg" alt="Oorie publication photograph 1"><figcaption><span>Oorie</span><span>01</span></figcaption></figure>
+      <figure class="half"><img src="https://freight.cargo.site/t/original/i/68b4cffffd5c05fcc698aa51b0296998226d2336bc08dfedfb2f23efd2dfd1a8/IMG_8219.jpg" alt="Oorie publication photograph 2" loading="lazy"><figcaption><span>Oorie</span><span>02</span></figcaption></figure>
+      <figure class="half"><img src="https://freight.cargo.site/t/original/i/908ff25e877e68e8ddd9b341c21046874c346f5836d0ff2cb5a4b0c580251752/IMG_8220.jpg" alt="Oorie publication photograph 3" loading="lazy"><figcaption><span>Oorie</span><span>03</span></figcaption></figure>
+      <figure class="wide"><img src="https://freight.cargo.site/t/original/i/32e140628fa17f6bab83bbea9a6ebd9a610a58a04ecc19b892806a828b73f43a/IMG_8221.jpg" alt="Oorie publication photograph 4" loading="lazy"><figcaption><span>Oorie</span><span>04</span></figcaption></figure>
+      <figure class="half"><img src="https://freight.cargo.site/t/original/i/6c788f4ec853aa48b495abc862e06822969fa4c8c7893f4508b9e928db7b5f91/IMG_8222.jpg" alt="Oorie publication photograph 5" loading="lazy"><figcaption><span>Oorie</span><span>05</span></figcaption></figure>
+      <figure class="half"><img src="https://freight.cargo.site/t/original/i/68b642ad457736b38991da28a934dfe012603f197e816da235a8e05a71494bf1/IMG_8223.jpg" alt="Oorie publication photograph 6" loading="lazy"><figcaption><span>Oorie</span><span>06</span></figcaption></figure>
+      <footer class="footer"><span>© Seongsu Kim</span><a href="https://www.instagram.com/seongsu.jpg/" target="_blank" rel="noopener noreferrer">Instagram</a></footer>
+    </main>
+  </div>
+  <dialog class="lightbox" aria-label="Expanded publication image">
+    <button class="lightbox-close" type="button" aria-label="Close image">×</button>
+    <button class="lightbox-prev" type="button" aria-label="Previous image">←</button>
+    <img class="lightbox-image" src="" alt="">
+    <button class="lightbox-next" type="button" aria-label="Next image">→</button>
+    <div class="lightbox-caption" aria-live="polite"></div>
+  </dialog>
+  <script>
+    const galleryImages=Array.from(document.querySelectorAll('main figure img'));
+    const lightbox=document.querySelector('.lightbox');
+    const lightboxImage=document.querySelector('.lightbox-image');
+    const lightboxCaption=document.querySelector('.lightbox-caption');
+    let currentImage=0;
+
+    function showImage(index){
+      currentImage=(index+galleryImages.length)%galleryImages.length;
+      const source=galleryImages[currentImage];
+      lightboxImage.src=source.currentSrc||source.src;
+      lightboxImage.alt=source.alt;
+      lightboxCaption.textContent=`${source.alt} · ${currentImage+1} / ${galleryImages.length}`;
+    }
+
+    function openLightbox(index){
+      showImage(index);
+      lightbox.showModal();
+    }
+
+    galleryImages.forEach((image,index)=>{
+      image.tabIndex=0;
+      image.setAttribute('role','button');
+      image.setAttribute('aria-label',`${image.alt}. Open large image.`);
+      image.addEventListener('click',()=>openLightbox(index));
+      image.addEventListener('keydown',event=>{
+        if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(index);}
+      });
+    });
+
+    document.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());
+    document.querySelector('.lightbox-prev').addEventListener('click',()=>showImage(currentImage-1));
+    document.querySelector('.lightbox-next').addEventListener('click',()=>showImage(currentImage+1));
+    lightbox.addEventListener('click',event=>{if(event.target===lightbox)lightbox.close();});
+    lightbox.addEventListener('keydown',event=>{
+      if(event.key==='ArrowLeft')showImage(currentImage-1);
+      if(event.key==='ArrowRight')showImage(currentImage+1);
+    });
+  </script>
+</body>
+</html>
