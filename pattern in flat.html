@@ -1,56 +1,98 @@
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>PATTERN IN FLAT</title>
-</head>
-<style>
-    body {
-        background-color: #000000;
-        background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ3bmlsc29wcWJpcThyczF6ZXYwdDMzOWpxM3lwMjltMjV1a2h2ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Txun6ahh9auWs/giphy.gif");
-        background-repeat: repeat;
-        background-size: 19%
-    }
-    
-    div.background-module {
-        position: absolute;
-        z-index: 1;
-        top: 0px;
-        left: 0px;
-    }
-    
-    div.background_module_photo {
-        position: absolute;
-        z-index: 1;
-        top: 78px;
-        left: 0px;
-        width: 810px;
-        height: 723px;
-    }
-    
-    div.background_module_stripe {
-        position: fixed;
-        z-index: 2;
-        top: 0px;
-        left: 336px;
-        width: 324px;
-    }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pattern in Flat, a photographic series by Seongsu Kim.">
+  <title>Pattern in Flat — Seongsu Kim</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --amber:#f3c6a6; --blue:#c5c9ed; --violet:#dbcbb9; --grey:rgba(220,220,220,.86); }
+    *,*::before,*::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background:#c9c9c9; }
+    body.animations-paused { background-image:none; background-color:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible,button:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:linear-gradient(180deg,rgba(240,240,240,.94),rgba(190,190,190,.84)); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .pause-button { width:100%; margin:0 0 var(--gap); padding:9px 8px; border:2px solid #000; border-radius:0; background:linear-gradient(90deg,var(--violet),#f0e8ff); color:#000; font:inherit; font-weight:bold; text-align:left; cursor:pointer; }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#e4f6ff 0%,var(--blue) 58%,#50ace4 100%); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:22px 28px 27px; background:linear-gradient(105deg,var(--amber) 0%,#ffd765 62%,#fff1b8 100%); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(50px,5.7vw,90px); font-weight:800; line-height:.82; letter-spacing:-.065em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(228,246,255,.86)); text-align:right; }
+    .intro { grid-column:1/span 2; padding:16px; background:linear-gradient(145deg,#efe7ff 0%,var(--violet) 58%,#a77dff 100%); font-size:27px; font-weight:bold; line-height:1.06; }
+    .intro p { margin:0; }
+    .details { grid-column:3/-1; padding:16px; background:linear-gradient(155deg,#e5f7ff 0%,var(--blue) 56%,#45a6df 100%); font-size:13px; line-height:1.45; }
+    .details dl { display:grid; grid-template-columns:70px 1fr; gap:8px 12px; margin:0; }
+    .details dt,.details dd { margin:0; }
+    .essay { grid-column:1/-1; display:grid; grid-template-columns:1fr; gap:1px; background:#000; }
+    .essay div { padding:18px; background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(232,246,255,.92)); font-size:14px; line-height:1.45; }
+    .essay p { margin:0 0 14px; }
+    .essay p:last-child { margin-bottom:0; }
+    .section-title { grid-column:1/-1; padding:11px 14px; background:linear-gradient(90deg,var(--amber),#fff0a8); }
+    .section-title h2 { margin:0; font-size:28px; line-height:1; text-transform:uppercase; }
+    .gallery { grid-column:1/-1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--gap); align-items:start; }
+    .gallery figure { display:flex; flex-direction:column; min-width:0; }
+    .gallery figure:last-child:nth-child(odd) { grid-column:1/-1; }
+    .quote { grid-column:1/-1; padding:18px; background:linear-gradient(110deg,#efe7ff,var(--violet) 60%,#a77dff); font-size:23px; font-weight:bold; line-height:1.12; }
+    .quote p { margin:0; }
+    figure { margin:0; background:#fff; }
+    figure img { display:block; width:100%; height:auto; cursor:zoom-in; }
+    figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; background:linear-gradient(90deg,#fff,#e9e9e9); font-size:11px; }
+    .wide { grid-column:1/-1; }
+    .half { grid-column:span 2; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:linear-gradient(90deg,rgba(239,239,239,.96),rgba(187,187,187,.86)); font-size:12px; }
+    .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
+    .lightbox[open] { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; align-items:center; }
+    .lightbox::backdrop { background:rgba(0,0,0,.94); }
+    .lightbox-image { display:block; max-width:100%; max-height:calc(100vh - 86px); margin:auto; object-fit:contain; }
+    .lightbox-caption { position:fixed; left:20px; right:20px; bottom:14px; color:#fff; font-size:12px; text-align:center; }
+    .lightbox button { border:0; border-radius:0; background:transparent; color:#fff; font:32px Arial,Helvetica,sans-serif; cursor:pointer; }
+    .lightbox button:hover { color:var(--amber); }
+    .lightbox-close { position:fixed; top:12px; right:18px; z-index:2; width:44px; height:44px; font-size:30px!important; }
+    .lightbox-prev,.lightbox-next { align-self:stretch; }
+    @media (max-width:900px) { body { background-size:280px auto; } .layout { display:block; width:100%; min-width:0; } .sidebar { position:relative; width:100%; min-height:0; } .identity { margin-bottom:18px; } main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.footer { grid-column:1/-1; } .half { grid-column:span 1; } h1 { font-size:clamp(48px,14vw,86px); } }
+    @media (max-width:520px) { body { background-size:240px auto; } main { grid-template-columns:1fr; } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.half,.footer { grid-column:1; } .essay,.gallery { grid-template-columns:1fr; } .gallery figure:last-child:nth-child(odd) { grid-column:1; } .footer { flex-direction:column; gap:8px; } }
+  .source-sheet { background:#fff; padding:12px; } .source-sheet summary { cursor:pointer; font-size:13px; padding:8px 0; } .source-sheet[open] summary { margin-bottom:12px; } h1 { line-height:.95; } figcaption { flex-wrap:wrap; }
 </style>
- <h1><span style="background-color:#FFFFFF">PATTERN IN FLAT</span></h1>
-    
-
+</head>
 <body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
 
-<img src="https://seongsukim.github.io/03_pattern in flat.jpg" width="950" height="650">
-<br><br>
-<img src="https://seongsukim.github.io/04_pattern in flat.jpg" width="950" height="650">
-<br><br>
-<img src="https://seongsukim.github.io/05_pattern in flat.jpg" width="950" height="650">
-<br><br>
-<img src="https://seongsukim.github.io/06_pattern in flat.jpg" width="950" height="650">
-
-
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="CV.html">CV</a><a href="pattern%20in%20flat.html" aria-current="page">Pattern in Flat</a><a href="LINE.html">Line</a><a href="MARINE%20CAMP.html">Marine Camp</a><a href="Hwang.html">Hwang-Hak Village</a><a href="unknown%20dawn.html">Unknown Dawn</a><a href="Relationship.html">An Anonymous Relationship</a><a href="Amount-yale.html">The Amount of Dependence</a><a href="emergency.html">Emergency</a><a href="first-experience.html">First Experience</a><a href="publications-yale.html">Oorie</a><a href="space-man-yale.html">Space Man</a><a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+    <main><header class="title"><h1>Pattern<br>in Flat</h1></header><div class="back"><a href="index.html">Back to home</a></div><figure class="wide"><img src="assets/pattern/01.jpg" alt="Pattern in Flat — introductory detail" tabindex="0" role="button" aria-label="Enlarge Pattern in Flat — introductory detail" ><figcaption><span>Pattern in Flat — introductory detail</span><span>Series introduction</span></figcaption></figure>
+<figure class="wide"><img src="assets/pattern/02.jpg" alt="PF. Air Conditioner" tabindex="0" role="button" aria-label="Enlarge PF. Air Conditioner" loading="lazy"><figcaption><span>PF. Air Conditioner</span><span>60 × 60 cm · Archival pigment print · 2014</span></figcaption></figure>
+<figure class="wide"><img src="assets/pattern/03.jpg" alt="PF. Locker" tabindex="0" role="button" aria-label="Enlarge PF. Locker" loading="lazy"><figcaption><span>PF. Locker</span><span>60 × 60 cm · Archival pigment print · 2015</span></figcaption></figure>
+<figure class="wide"><img src="assets/pattern/04.jpg" alt="PF. Drainage" tabindex="0" role="button" aria-label="Enlarge PF. Drainage" loading="lazy"><figcaption><span>PF. Drainage</span><span>60 × 60 cm · Archival pigment print · 2015</span></figcaption></figure>
+<figure class="wide"><img src="assets/pattern/05.jpg" alt="PF. Wire Mesh" tabindex="0" role="button" aria-label="Enlarge PF. Wire Mesh" loading="lazy"><figcaption><span>PF. Wire Mesh</span><span>60 × 60 cm · Archival pigment print · 2015</span></figcaption></figure>
+<figure class="wide"><img src="assets/pattern/06.jpg" alt="PF. Board Dot" tabindex="0" role="button" aria-label="Enlarge PF. Board Dot" loading="lazy"><figcaption><span>PF. Board Dot</span><span>60 × 60 cm · Archival pigment print · 2015</span></figcaption></figure>
+<figure class="wide"><img src="assets/pattern/07.jpg" alt="PF. Ceiling Tiles" tabindex="0" role="button" aria-label="Enlarge PF. Ceiling Tiles" loading="lazy"><figcaption><span>PF. Ceiling Tiles</span><span>60 × 60 cm · Archival pigment print · 2015</span></figcaption></figure>
+<figure class="wide"><img src="assets/pattern/08.jpg" alt="PF. Fire Hydrant Mic" tabindex="0" role="button" aria-label="Enlarge PF. Fire Hydrant Mic" loading="lazy"><figcaption><span>PF. Fire Hydrant Mic</span><span>60 × 60 cm · Archival pigment print · 2015</span></figcaption></figure><footer class="footer"><a href="index.html">All works</a><a href="LINE.html">Next: Line →</a></footer></main>
+  </div>
+  <dialog class="lightbox" aria-label="Expanded image viewer"><button class="lightbox-prev" type="button" aria-label="Previous image">‹</button><img class="lightbox-image" alt=""><button class="lightbox-next" type="button" aria-label="Next image">›</button><button class="lightbox-close" type="button" aria-label="Close image">×</button><div class="lightbox-caption"></div></dialog>
+  <script>
+    const images=[...document.querySelectorAll('figure img')];
+    const lightbox=document.querySelector('.lightbox');
+    const enlarged=lightbox.querySelector('.lightbox-image');
+    const lightboxCaption=lightbox.querySelector('.lightbox-caption');
+    let current=0;
+    function show(index){ current=(index+images.length)%images.length; const image=images[current]; enlarged.src=image.currentSrc||image.src; enlarged.alt=image.alt; lightboxCaption.textContent=image.closest('figure').querySelector('figcaption').textContent.trim(); }
+    images.forEach((image,index)=>{ const open=()=>{show(index);lightbox.showModal();}; image.addEventListener('click',open); image.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();open();}}); });
+    lightbox.querySelector('.lightbox-prev').addEventListener('click',()=>show(current-1));
+    lightbox.querySelector('.lightbox-next').addEventListener('click',()=>show(current+1));
+    lightbox.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());
+    lightbox.addEventListener('click',event=>{ if(event.target===lightbox) lightbox.close(); });
+    document.addEventListener('keydown',event=>{ if(!lightbox.open)return; if(event.key==='ArrowLeft')show(current-1); if(event.key==='ArrowRight')show(current+1); });
+  </script>
 </body>
-
 </html>

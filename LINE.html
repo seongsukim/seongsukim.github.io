@@ -1,62 +1,93 @@
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>LINE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Line, a photography series by Seongsu Kim.">
+  <title>Line — Seongsu Kim</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --amber:#b8e5df; --blue:#adc5ef; --violet:#ead0ab; --grey:rgba(220,220,220,.86); }
+    *,*::before,*::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background-color:#000; background-image:url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazBkdjJmZnByODNmMzFndWZoMzdtaDE1dGpzN3V0cWpwOGpxM3g5diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y8wDBCAz9NFyykIjKe/giphy.gif"); background-repeat:repeat; background-size:19%; background-attachment:fixed; }
+    body.animations-paused { background-image:none; background-color:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible,button:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:linear-gradient(180deg,rgba(240,240,240,.94),rgba(190,190,190,.84)); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .pause-button { width:100%; margin:0 0 var(--gap); padding:9px 8px; border:2px solid #000; border-radius:0; background:linear-gradient(90deg,var(--violet),#f0e8ff); color:#000; font:inherit; font-weight:bold; text-align:left; cursor:pointer; }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#e4f6ff 0%,var(--blue) 58%,#50ace4 100%); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:22px 28px 27px; background:linear-gradient(105deg,var(--amber) 0%,#ffd765 62%,#fff1b8 100%); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(50px,5.7vw,90px); font-weight:800; line-height:.82; letter-spacing:-.065em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(228,246,255,.86)); text-align:right; }
+    .intro { grid-column:1/span 2; padding:16px; background:linear-gradient(145deg,#efe7ff 0%,var(--violet) 58%,#a77dff 100%); font-size:27px; font-weight:bold; line-height:1.06; }
+    .intro p { margin:0; }
+    .details { grid-column:3/-1; padding:16px; background:linear-gradient(155deg,#e5f7ff 0%,var(--blue) 56%,#45a6df 100%); font-size:13px; line-height:1.45; }
+    .details dl { display:grid; grid-template-columns:70px 1fr; gap:8px 12px; margin:0; }
+    .details dt,.details dd { margin:0; }
+    .essay { grid-column:1/-1; display:grid; grid-template-columns:1fr; gap:1px; background:#000; }
+    .essay div { padding:18px; background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(232,246,255,.92)); font-size:14px; line-height:1.45; }
+    .essay p { margin:0 0 14px; }
+    .essay p:last-child { margin-bottom:0; }
+    .section-title { grid-column:1/-1; padding:11px 14px; background:linear-gradient(90deg,var(--amber),#fff0a8); }
+    .section-title h2 { margin:0; font-size:28px; line-height:1; text-transform:uppercase; }
+    .gallery { grid-column:1/-1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--gap); align-items:start; }
+    .gallery figure { display:flex; flex-direction:column; min-width:0; }
+    .gallery figure:last-child:nth-child(odd) { grid-column:1/-1; }
+    .quote { grid-column:1/-1; padding:18px; background:linear-gradient(110deg,#efe7ff,var(--violet) 60%,#a77dff); font-size:23px; font-weight:bold; line-height:1.12; }
+    .quote p { margin:0; }
+    figure { margin:0; background:#fff; }
+    figure img { display:block; width:100%; height:auto; cursor:zoom-in; }
+    figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; background:linear-gradient(90deg,#fff,#e9e9e9); font-size:11px; }
+    .wide { grid-column:1/-1; }
+    .half { grid-column:span 2; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:linear-gradient(90deg,rgba(239,239,239,.96),rgba(187,187,187,.86)); font-size:12px; }
+    .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
+    .lightbox[open] { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; align-items:center; }
+    .lightbox::backdrop { background:rgba(0,0,0,.94); }
+    .lightbox-image { display:block; max-width:100%; max-height:calc(100vh - 86px); margin:auto; object-fit:contain; }
+    .lightbox-caption { position:fixed; left:20px; right:20px; bottom:14px; color:#fff; font-size:12px; text-align:center; }
+    .lightbox button { border:0; border-radius:0; background:transparent; color:#fff; font:32px Arial,Helvetica,sans-serif; cursor:pointer; }
+    .lightbox button:hover { color:var(--amber); }
+    .lightbox-close { position:fixed; top:12px; right:18px; z-index:2; width:44px; height:44px; font-size:30px!important; }
+    .lightbox-prev,.lightbox-next { align-self:stretch; }
+    @media (max-width:900px) { body { background-size:280px auto; } .layout { display:block; width:100%; min-width:0; } .sidebar { position:relative; width:100%; min-height:0; } .identity { margin-bottom:18px; } main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.footer { grid-column:1/-1; } .half { grid-column:span 1; } h1 { font-size:clamp(48px,14vw,86px); } }
+    @media (max-width:520px) { body { background-size:240px auto; } main { grid-template-columns:1fr; } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.half,.footer { grid-column:1; } .essay,.gallery { grid-template-columns:1fr; } .gallery figure:last-child:nth-child(odd) { grid-column:1; } .footer { flex-direction:column; gap:8px; } }
+  .source-sheet { background:#fff; padding:12px; } .source-sheet summary { cursor:pointer; font-size:13px; padding:8px 0; } .source-sheet[open] summary { margin-bottom:12px; } h1 { line-height:.95; } figcaption { flex-wrap:wrap; }
+</style>
 </head>
-<style>
-    body {
-        background-color: #000000;
-        background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazBkdjJmZnByODNmMzFndWZoMzdtaDE1dGpzN3V0cWpwOGpxM3g5diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y8wDBCAz9NFyykIjKe/giphy.gif");
-        background-repeat: repeat;
-        background-size: 19%
-    }
-    
-    div.background-module {
-        position: absolute;
-        z-index: 1;
-        top: 0px;
-        left: 0px;
-    }
-    
-    div.background_module_photo {
-        position: absolute;
-        z-index: 1;
-        top: 78px;
-        left: 0px;
-        width: 810px;
-        height: 723px;
-    }
-    
-    div.background_module_stripe {
-        position: fixed;
-        z-index: 2;
-        top: 0px;
-        left: 336px;
-        width: 324px;
-    }
-</style>
- <h1><span style="background-color:#FFFFFF">LINE</span></h1>
-    
-
 <body>
-
-<img src="https://seongsukim.github.io/08_Line.jpg" width="950" height="650">
-<br><br>
-<img src="https://seongsukim.github.io/09_Line.jpg" width="950" height="650">
-<br><br>
-
-
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <button class="pause-button" type="button" aria-pressed="false">Pause animations</button>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="CV.html">CV</a><a href="pattern%20in%20flat.html">Pattern in Flat</a><a href="LINE.html" aria-current="page">Line</a><a href="MARINE%20CAMP.html">Marine Camp</a><a href="Hwang.html">Hwang-Hak Village</a><a href="unknown%20dawn.html">Unknown Dawn</a><a href="Relationship.html">An Anonymous Relationship</a><a href="Amount-yale.html">The Amount of Dependence</a><a href="emergency.html">Emergency</a><a href="first-experience.html">First Experience</a><a href="publications-yale.html">Oorie</a><a href="space-man-yale.html">Space Man</a><a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+    <main><header class="title"><h1>Line</h1></header><div class="back"><a href="index.html">Back to home</a></div><section class="intro"><p>If you look up and stare at the sky, you can see the lines.</p></section><section class="details"><p>Looking at those lines, I could not remember the role of the line. I just thought it was "beautiful twisted."</p></section><figure class="wide"><img src="assets/line/02.jpg" alt="Line — 37.331048, 126.837015" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Line 37.331048, 126.837015"><figcaption><span>37.331048, 126.837015</span><a href="https://www.google.com/maps/search/?api=1&amp;query=37.331048%2C%20126.837015" target="_blank" rel="noopener noreferrer">View location ↗</a></figcaption></figure><section class="essay"><div><p>This work began with the same idea as the previous pattern series. The electric lines that could easily be seen in any place were suddenly visible. It is aesthetics of the line which is different from the pattern of various patterns which we did before.</p></div></section><figure class="wide"><img src="assets/line/03.jpg" alt="Line — 37.499641, 127.027325" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Line 37.499641, 127.027325"><figcaption><span>37.499641, 127.027325</span><a href="https://www.google.com/maps/search/?api=1&amp;query=37.499641%2C%20127.027325" target="_blank" rel="noopener noreferrer">View location ↗</a></figcaption></figure><figure class="wide"><img src="assets/line/04.jpg" alt="Line — 37.495065, 127.153769" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Line 37.495065, 127.153769"><figcaption><span>37.495065, 127.153769</span><a href="https://www.google.com/maps/search/?api=1&amp;query=37.495065%2C%20127.153769" target="_blank" rel="noopener noreferrer">View location ↗</a></figcaption></figure><figure class="wide"><img src="assets/line/05.jpg" alt="Line — 34.663150, 135.504514" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Line 34.663150, 135.504514"><figcaption><span>34.663150, 135.504514</span><a href="https://www.google.com/maps/search/?api=1&amp;query=34.663150%2C%20135.504514" target="_blank" rel="noopener noreferrer">View location ↗</a></figcaption></figure><section class="essay"><div><p>Is there anything that comes to mind when I look at the title of a photo ...? Try putting that number into the Google Maps search box, and you'll see some funny scenes.</p><p>This is a task that can be done anywhere in the world. It has the same context as the previous pattern series. I want to make a world map with my own eyes. It's sort of like a collection. It is really interesting.</p></div></section><details class="wide source-sheet"><summary>37.235747, 126.588410 — original composition</summary><figure><img src="08_Line.jpg" alt="Line: original composition with diagonal photograph and overlaid text" loading="lazy" tabindex="0" role="button" aria-label="Enlarge original composition"><figcaption><span>37.235747, 126.588410 · Original composition</span></figcaption></figure></details><footer class="footer"><span>© Seongsu Kim</span><a href="contact.html">Contact</a></footer></main>
+  </div>
+  <dialog class="lightbox" aria-label="Expanded image viewer"><button class="lightbox-prev" type="button" aria-label="Previous image">‹</button><img class="lightbox-image" alt=""><button class="lightbox-next" type="button" aria-label="Next image">›</button><button class="lightbox-close" type="button" aria-label="Close image">×</button><div class="lightbox-caption"></div></dialog>
+  <script>
+    const pauseButton=document.querySelector('.pause-button');
+    pauseButton.addEventListener('click',()=>{ const paused=document.body.classList.toggle('animations-paused'); pauseButton.textContent=paused?'Play animations':'Pause animations'; pauseButton.setAttribute('aria-pressed',String(paused)); });
+    const images=[...document.querySelectorAll('figure img')];
+    const lightbox=document.querySelector('.lightbox');
+    const enlarged=lightbox.querySelector('.lightbox-image');
+    const lightboxCaption=lightbox.querySelector('.lightbox-caption');
+    let current=0;
+    function show(index){ current=(index+images.length)%images.length; const image=images[current]; enlarged.src=image.currentSrc||image.src; enlarged.alt=image.alt; lightboxCaption.textContent=image.closest('figure').querySelector('figcaption').textContent.trim(); }
+    images.forEach((image,index)=>{ const open=()=>{show(index);lightbox.showModal();}; image.addEventListener('click',open); image.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();open();}}); });
+    lightbox.querySelector('.lightbox-prev').addEventListener('click',()=>show(current-1));
+    lightbox.querySelector('.lightbox-next').addEventListener('click',()=>show(current+1));
+    lightbox.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());
+    lightbox.addEventListener('click',event=>{ if(event.target===lightbox) lightbox.close(); });
+    document.addEventListener('keydown',event=>{ if(!lightbox.open)return; if(event.key==='ArrowLeft')show(current-1); if(event.key==='ArrowRight')show(current+1); });
+  </script>
 </body>
-
 </html>
-<style>
-@media (max-width: 900px) {
-    body { margin: 0 !important; padding: 10px !important; background-size: cover !important; }
-    img, iframe, video { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
-    div, span, p, h1, h2, h3, h4, h5, h6 { max-width: 100vw !important; box-sizing: border-box !important; }
-    div[style] { width: 100% !important; max-width: 100% !important; height: auto !important; max-height: none !important; }
-    .background_module_photo, .background-module, .background_module_stripe { position: relative !important; width: 100% !important; top: auto !important; left: auto !important; height: auto !important; }
-}
-</style>
