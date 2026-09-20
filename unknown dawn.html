@@ -1,56 +1,92 @@
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Unknown Dawn</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Unknown Dawn, a photography series by Seongsu Kim.">
+  <title>Unknown Dawn — Seongsu Kim</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --amber:#c4b5fd; --blue:#8bd9dd; --violet:#b4c5f7; --grey:rgba(220,220,220,.86); }
+    *,*::before,*::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background-color:#000; background-image:url("https://thumbs.gfycat.com/IlliterateIdealisticImpala-size_restricted.gif"); background-repeat:repeat; background-size:9%; background-attachment:fixed; }
+    body.animations-paused { background-image:none; background-color:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible,button:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:linear-gradient(180deg,rgba(240,240,240,.94),rgba(190,190,190,.84)); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .pause-button { width:100%; margin:0 0 var(--gap); padding:9px 8px; border:2px solid #000; border-radius:0; background:linear-gradient(90deg,var(--violet),#f0e8ff); color:#000; font:inherit; font-weight:bold; text-align:left; cursor:pointer; }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#e4f6ff 0%,var(--blue) 58%,#50ace4 100%); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:22px 28px 27px; background:linear-gradient(105deg,var(--amber) 0%,#ffd765 62%,#fff1b8 100%); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(50px,5.7vw,90px); font-weight:800; line-height:.82; letter-spacing:-.065em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(228,246,255,.86)); text-align:right; }
+    .intro { grid-column:1/span 2; padding:16px; background:linear-gradient(145deg,#efe7ff 0%,var(--violet) 58%,#a77dff 100%); font-size:27px; font-weight:bold; line-height:1.06; }
+    .intro p { margin:0; }
+    .details { grid-column:3/-1; padding:16px; background:linear-gradient(155deg,#e5f7ff 0%,var(--blue) 56%,#45a6df 100%); font-size:13px; line-height:1.45; }
+    .details dl { display:grid; grid-template-columns:70px 1fr; gap:8px 12px; margin:0; }
+    .details dt,.details dd { margin:0; }
+    .essay { grid-column:1/-1; display:grid; grid-template-columns:1fr; gap:1px; background:#000; }
+    .essay div { padding:18px; background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(232,246,255,.92)); font-size:14px; line-height:1.45; }
+    .essay p { margin:0 0 14px; }
+    .essay p:last-child { margin-bottom:0; }
+    .section-title { grid-column:1/-1; padding:11px 14px; background:linear-gradient(90deg,var(--amber),#fff0a8); }
+    .section-title h2 { margin:0; font-size:28px; line-height:1; text-transform:uppercase; }
+    .gallery { grid-column:1/-1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--gap); align-items:start; }
+    .gallery figure { display:flex; flex-direction:column; min-width:0; }
+    .gallery figure:last-child:nth-child(odd) { grid-column:1/-1; }
+    .quote { grid-column:1/-1; padding:18px; background:linear-gradient(110deg,#efe7ff,var(--violet) 60%,#a77dff); font-size:23px; font-weight:bold; line-height:1.12; }
+    .quote p { margin:0; }
+    figure { margin:0; background:#fff; }
+    figure img { display:block; width:100%; height:auto; cursor:zoom-in; }
+    figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; background:linear-gradient(90deg,#fff,#e9e9e9); font-size:11px; }
+    .wide { grid-column:1/-1; }
+    .half { grid-column:span 2; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:linear-gradient(90deg,rgba(239,239,239,.96),rgba(187,187,187,.86)); font-size:12px; }
+    .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
+    .lightbox[open] { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; align-items:center; }
+    .lightbox::backdrop { background:rgba(0,0,0,.94); }
+    .lightbox-image { display:block; max-width:100%; max-height:calc(100vh - 86px); margin:auto; object-fit:contain; }
+    .lightbox-caption { position:fixed; left:20px; right:20px; bottom:14px; color:#fff; font-size:12px; text-align:center; }
+    .lightbox button { border:0; border-radius:0; background:transparent; color:#fff; font:32px Arial,Helvetica,sans-serif; cursor:pointer; }
+    .lightbox button:hover { color:var(--amber); }
+    .lightbox-close { position:fixed; top:12px; right:18px; z-index:2; width:44px; height:44px; font-size:30px!important; }
+    .lightbox-prev,.lightbox-next { align-self:stretch; }
+    @media (max-width:900px) { body { background-size:280px auto; } .layout { display:block; width:100%; min-width:0; } .sidebar { position:relative; width:100%; min-height:0; } .identity { margin-bottom:18px; } main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.footer { grid-column:1/-1; } .half { grid-column:span 1; } h1 { font-size:clamp(48px,14vw,86px); } }
+    @media (max-width:520px) { body { background-size:240px auto; } main { grid-template-columns:1fr; } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.half,.footer { grid-column:1; } .essay,.gallery { grid-template-columns:1fr; } .gallery figure:last-child:nth-child(odd) { grid-column:1; } .footer { flex-direction:column; gap:8px; } }
+  </style>
 </head>
-<style>
-    body {
-        background-color: #000000;
-        background-image: url("https://thumbs.gfycat.com/IlliterateIdealisticImpala-size_restricted.gif");
-        background-repeat: repeat;
-        background-size: 9%
-    }
-    
-    div.background-module {
-        position: absolute;
-        z-index: 1;
-        top: 0px;
-        left: 0px;
-    }
-    
-    div.background_module_photo {
-        position: absolute;
-        z-index: 1;
-        top: 78px;
-        left: 0px;
-        width: 810px;
-        height: 723px;
-    }
-    
-    div.background_module_stripe {
-        position: fixed;
-        z-index: 2;
-        top: 0px;
-        left: 336px;
-        width: 324px;
-    }
-</style>
- <h1><span style="background-color:#FFFFFF">Unknown Dawn</span></h1>
-    
-
 <body>
-
-<img src="https://seongsukim.github.io/15_unknown dawn.jpg" width="1200" height="850">
-<br><br>
-<img src="https://seongsukim.github.io/16_unknown dawn.jpg" width="1200" height="850">
-<br><br>
-<img src="https://seongsukim.github.io/17_2_unknown dawn.jpg" width="1200" height="850">
-<br><br>
-<img src="https://seongsukim.github.io/17_unknown dawn.jpg" width="1200" height="850">
-
-
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <button class="pause-button" type="button" aria-pressed="false">Pause animations</button>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="CV.html">CV</a><a href="pattern%20in%20flat.html">Pattern in Flat</a><a href="LINE.html">Line</a><a href="MARINE%20CAMP.html">Marine Camp</a><a href="Hwang.html">Hwang-Hak Village</a><a href="unknown%20dawn.html" aria-current="page">Unknown Dawn</a><a href="Relationship.html">An Anonymous Relationship</a><a href="Amount-yale.html">The Amount of Dependence</a><a href="emergency.html">Emergency</a><a href="first-experience.html">First Experience</a><a href="publications-yale.html">Oorie</a><a href="space-man-yale.html">Space Man</a><a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+    <main><header class="title"><h1>Unknown<br>Dawn</h1></header><div class="back"><a href="index.html">Back to home</a></div><figure class="wide"><img src="assets/unknown-dawn/01.jpg" alt="Unknown Dawn" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Unknown Dawn"><figcaption><span>Unknown Dawn</span><span></span></figcaption></figure><section class="essay"><div><p>It was an accidental meeting that I was in that space. Unfamiliar town, chilly night air, and gloomy atmosphere.</p><p>“Is it really the center of Seoul?”</p><p>It was my thought when I first looked at the factory site in Sungsoo-dong. I couldn’t hear and see anything alive besides me. Moreover, I could feel night fog and mysterious fantasy at that night. After that day, I’ve gone to Sungsoo-Dong every dawn.</p></div></section><figure class="wide"><img src="assets/unknown-dawn/02.jpg" alt="Dong-Gwang (동광)" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Dong-Gwang (동광)"><figcaption><span>Dong-Gwang (동광) · 20 × 24 inch · archival pigment print</span><span>2015</span></figcaption></figure><figure class="wide"><img src="assets/unknown-dawn/03.jpg" alt="The Back Street of a Town" loading="lazy" tabindex="0" role="button" aria-label="Enlarge The Back Street of a Town"><figcaption><span>The Back Street of a Town · 20 × 24 inch · archival pigment print</span><span>2015</span></figcaption></figure><figure class="wide"><img src="assets/unknown-dawn/04.jpg" alt="Public Parking" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Public Parking"><figcaption><span>Public Parking · 20 × 24 inch · archival pigment print</span><span>2015</span></figcaption></figure><section class="essay"><div><p>The fire in the public parking lot was still shining brightly. The red light was visible from the second floor window of the building.</p><p>What was that light?</p><p>The clock on my wrist was pointing to 2 am. The moving creature, where I was alone, quietly set up the camera with a tripod.</p></div></section><figure class="wide"><img src="assets/unknown-dawn/05.jpg" alt="Ghost Building" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Ghost Building"><figcaption><span>Ghost Building · 150 × 100 cm · archival pigment print</span><span>2016</span></figcaption></figure><figure class="wide"><img src="assets/unknown-dawn/06.jpg" alt="Pharmaceutical Factory" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Pharmaceutical Factory"><figcaption><span>Pharmaceutical Factory · 150 × 100 cm · archival pigment print</span><span>2016</span></figcaption></figure><figure class="wide"><img src="assets/unknown-dawn/07.jpg" alt="Container Box" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Container Box"><figcaption><span>Container Box · 150 × 100 cm · archival pigment print</span><span>2016</span></figcaption></figure><section class="essay"><div><p>It was still at 2 o'clock in the afternoon, but the factory was still on, and there were still sounds of machines rolling back and forth. This was not the Seoul I knew so far.</p></div></section><figure class="wide"><img src="assets/unknown-dawn/08.jpg" alt="Unknown Dawn — 08" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Unknown Dawn — 08"><figcaption><span>Unknown Dawn — 08</span><span></span></figcaption></figure><section class="essay"><div><p>My style of photography is always to keep vertical and horizontal. The sense of security coming from it is good. I tried to cut down only the sections of the buildings in a plane. But as soon as I saw this building, I was impressed.</p><p>"What building is it?"</p><p>It was not a home or a factory. I remember that I shot more than two hours only in that place that day. It is at 2 o'clock in the morning when it feels bad.</p></div></section><figure class="wide"><img src="assets/unknown-dawn/09.jpg" alt="Unknown Dawn — 09 (detail)" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Unknown Dawn — 09 (detail)"><figcaption><span>Unknown Dawn — 09 (detail)</span><span></span></figcaption></figure><figure class="wide"><img src="assets/unknown-dawn/10.jpg" alt="Unknown Dawn — 10 (detail)" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Unknown Dawn — 10 (detail)"><figcaption><span>Unknown Dawn — 10 (detail)</span><span></span></figcaption></figure><figure class="wide"><img src="assets/unknown-dawn/11.jpg" alt="Unknown Dawn — 11 (detail)" loading="lazy" tabindex="0" role="button" aria-label="Enlarge Unknown Dawn — 11 (detail)"><figcaption><span>Unknown Dawn — 11 (detail)</span><span></span></figcaption></figure><footer class="footer"><span>© Seongsu Kim</span><a href="contact.html">Contact</a></footer></main>
+  </div>
+  <dialog class="lightbox" aria-label="Expanded image viewer"><button class="lightbox-prev" type="button" aria-label="Previous image">‹</button><img class="lightbox-image" alt=""><button class="lightbox-next" type="button" aria-label="Next image">›</button><button class="lightbox-close" type="button" aria-label="Close image">×</button><div class="lightbox-caption"></div></dialog>
+  <script>
+    const pauseButton=document.querySelector('.pause-button');
+    pauseButton.addEventListener('click',()=>{ const paused=document.body.classList.toggle('animations-paused'); pauseButton.textContent=paused?'Play animations':'Pause animations'; pauseButton.setAttribute('aria-pressed',String(paused)); });
+    const images=[...document.querySelectorAll('figure img')];
+    const lightbox=document.querySelector('.lightbox');
+    const enlarged=lightbox.querySelector('.lightbox-image');
+    const lightboxCaption=lightbox.querySelector('.lightbox-caption');
+    let current=0;
+    function show(index){ current=(index+images.length)%images.length; const image=images[current]; enlarged.src=image.currentSrc||image.src; enlarged.alt=image.alt; lightboxCaption.textContent=image.closest('figure').querySelector('figcaption').textContent.trim(); }
+    images.forEach((image,index)=>{ const open=()=>{show(index);lightbox.showModal();}; image.addEventListener('click',open); image.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();open();}}); });
+    lightbox.querySelector('.lightbox-prev').addEventListener('click',()=>show(current-1));
+    lightbox.querySelector('.lightbox-next').addEventListener('click',()=>show(current+1));
+    lightbox.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());
+    lightbox.addEventListener('click',event=>{ if(event.target===lightbox) lightbox.close(); });
+    document.addEventListener('keydown',event=>{ if(!lightbox.open)return; if(event.key==='ArrowLeft')show(current-1); if(event.key==='ArrowRight')show(current+1); });
+  </script>
 </body>
-
 </html>

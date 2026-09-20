@@ -1,213 +1,80 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Experience — SEONGSU KIM</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://type.cargo.site" crossorigin>
-  <link rel="preconnect" href="https://freight.cargo.site" crossorigin>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="First Experience, a video work by Seongsu Kim.">
+  <title>First Experience — Seongsu Kim</title>
   <style>
-    @font-face {
-      font-display: swap;
-      font-family: "Wremena";
-      src: url("https://type.cargo.site/files/Wremena-Regular.woff") format("woff");
-      font-style: normal;
-      font-weight: normal;
-    }
-    @font-face {
-      font-display: swap;
-      font-family: "Wremena";
-      src: url("https://type.cargo.site/files/Wremena-Bold.woff") format("woff");
-      font-style: normal;
-      font-weight: bold;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      font-size: 80.82%;
-      background-color: #ffffff;
-    }
-
-    body {
-      background-color: #ffffff;
-      color: rgba(0, 0, 0, 0.85);
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      font-size: 1.6rem;
-      line-height: 1.4;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    /* 우측 상단 Instagram 고정 링크 */
-    .top-instagram {
-      position: absolute;
-      top: 2.5rem;
-      right: 2.5rem;
-      z-index: 100;
-    }
-
-    .top-instagram a {
-      color: rgba(0, 0, 0, 0.85);
-      text-decoration: none;
-      font-size: 1.8rem;
-      font-weight: 400;
-      transition: opacity 0.2s ease;
-    }
-
-    .top-instagram a:hover {
-      opacity: 0.6;
-    }
-
-    /* 오른쪽 60% 레이아웃 (Cargo right_cover) */
-    .page-layout {
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end; /* 왼쪽 40%는 여백, 오른쪽 60%에 콘텐츠 배치 */
-      position: relative;
-    }
-
-    .content-container {
-      width: 60%;
-      max-width: 66rem;
-      padding: 4rem 2.5rem 10rem 2.5rem;
-      margin-right: 2.5rem;
-    }
-
-    /* 페이지 제목 */
-    .page-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #000000;
-      margin-bottom: 4.5rem;
-      line-height: 1.2;
-    }
-
-    /* 비디오 박스 (가운데 정렬) */
-    .video-section {
-      width: 100%;
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 640 / 480;
-      margin: 0 auto;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* 캡션 (가운데 정렬 + 이탤릭) */
-    .caption {
-      text-align: center;
-      font-style: italic;
-      font-size: 1.35rem;
-      color: rgba(0, 0, 0, 0.85);
-      margin-top: 1.8rem;
-      margin-bottom: 6rem;
-      line-height: 1.5;
-    }
-
-    /* 하단 이미지 */
-    .image-section {
-      width: 100%;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .image-section img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* 모바일 반응형 */
-    @media (max-width: 900px) {
-      .top-instagram {
-        position: absolute;
-        top: 2rem;
-        right: 1.5rem;
-      }
-
-      .page-layout {
-        justify-content: flex-start;
-      }
-
-      .content-container {
-        width: 100%;
-        max-width: 100%;
-        margin-right: 0;
-        padding: 3rem 1.5rem 6rem 1.5rem;
-      }
-
-      .page-title {
-        font-size: 2rem;
-        margin-bottom: 3rem;
-      }
-
-      .caption {
-        margin-bottom: 4rem;
-      }
-    }
+    :root { --unit:162px; --gap:12px; --yellow:#fff800; --pink:#f78181; --green:#8cff98; --grey:rgba(220,220,220,.88); }
+    *,*::before,*::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible,button:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:linear-gradient(180deg,rgba(240,240,240,.96),rgba(193,193,193,.88)); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#ffd9d9 0%,var(--pink) 58%,#ed6868 100%); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:22px 28px 27px; background:linear-gradient(105deg,var(--yellow) 0%,#fff971 64%,#fffdd0 100%); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(54px,6.3vw,98px); font-weight:800; line-height:.82; letter-spacing:-.065em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(226,255,230,.88)); text-align:right; }
+    .statement { grid-column:1/-1; padding:14px 16px 15px; background:linear-gradient(90deg,#ffdede 0%,var(--pink) 58%,#eb6675 100%); font-size:clamp(18px,1.65vw,23px); font-weight:bold; line-height:1.12; }
+    .statement p { margin:0; }
+    .details { position:absolute; z-index:4; top:calc(350px + 3cm); left:calc(100% + var(--gap) + .5cm); width:260px; min-height:210px; padding:34px 20px 22px; background:linear-gradient(155deg,#e6ffe8 0%,var(--green) 55%,#5fea70 100%); box-shadow:7px 9px 0 rgba(0,0,0,.22); transform:rotate(1.4deg); transform-origin:top center; font-size:13px; line-height:1.45; }
+    .details::before { content:""; position:absolute; top:-12px; left:50%; width:88px; height:25px; background:rgba(255,246,194,.78); box-shadow:0 1px 2px rgba(0,0,0,.12); transform:translateX(-50%) rotate(-2deg); }
+    .details dl { display:grid; grid-template-columns:78px 1fr; gap:8px 12px; margin:0; }
+    .details dt,.details dd { margin:0; }
+    .video { grid-column:1/-1; background:#000; }
+    .video-frame { position:relative; aspect-ratio:4/3; }
+    .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .caption { padding:8px 10px 10px; background:linear-gradient(90deg,#fff 0%,#ececec 100%); font-size:11px; }
+    figure { grid-column:1/-1; margin:0; background:#fff; }
+    figure img { display:block; width:100%; height:auto; cursor:zoom-in; }
+    figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; background:linear-gradient(90deg,#fff,#e9e9e9); font-size:11px; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:linear-gradient(90deg,rgba(239,239,239,.96),rgba(188,188,188,.86)); font-size:12px; }
+    .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
+    .lightbox[open] { display:grid; place-items:center; }
+    .lightbox::backdrop { background:rgba(0,0,0,.94); }
+    .lightbox-image { display:block; max-width:calc(100vw - 50px); max-height:calc(100vh - 80px); object-fit:contain; }
+    .lightbox-caption { position:fixed; left:20px; right:20px; bottom:14px; color:#fff; font-size:12px; text-align:center; }
+    .lightbox-close { position:fixed; top:12px; right:18px; z-index:2; width:44px; height:44px; padding:0; border:0; background:transparent; color:#fff; font:32px Arial,Helvetica,sans-serif; cursor:pointer; }
+    .lightbox-close:hover { color:var(--yellow); }
+    @media (max-width:900px) { .layout { display:block; width:100%; min-width:0; } .sidebar { position:relative; width:100%; min-height:0; } .identity { margin-bottom:18px; } main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); } .title,.back,.statement,.video,figure,.footer { grid-column:1/-1; } .details { position:relative; top:auto; left:auto; grid-column:2; grid-row:4; width:auto; min-height:190px; margin:10px 8px 22px; } h1 { font-size:clamp(52px,15vw,92px); } }
+    @media (max-width:520px) { main { grid-template-columns:1fr; } .title,.back,.statement,.details,.video,figure,.footer { grid-column:1; } .details { grid-row:auto; margin:10px 12px 24px; } .footer { flex-direction:column; gap:8px; } }
   </style>
 </head>
 <body>
-
-  <!-- 우측 상단 Instagram 링크 -->
-  <aside class="top-instagram">
-    <a href="https://www.instagram.com/seongsu.jpg/" target="_blank" rel="noopener noreferrer">Instagram</a>
-  </aside>
-
-  <!-- 오른쪽 60% 콘텐츠 영역 -->
-  <main class="page-layout">
-    <div class="content-container">
-
-      <!-- 상단 제목 -->
-      <h1 class="page-title">First Experience</h1>
-
-      <!-- 비메오 동영상 (가운데 정렬) -->
-      <div class="video-section">
-        <div class="video-wrapper">
-          <iframe 
-            src="https://player.vimeo.com/video/362550388" 
-            frameborder="0" 
-            allow="autoplay; fullscreen; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <!-- 비디오 설명 캡션 (가운데 정렬, 이탤릭) -->
-      <p class="caption">It is practice about how to rolling up cigarettes for 18 minutes.</p>
-
-      <!-- 하단 스크린샷 이미지 -->
-      <div class="image-section">
-        <img 
-          src="https://freight.cargo.site/t/original/i/523c70305224af8cadf7481f9619ed8c9c56021d6a576bdf962273bbc59d8651/Screenshot-2019-05-07-at-00.45.30.png" 
-          alt="Screenshot 2019-05-07" 
-          loading="lazy">
-      </div>
-
-    </div>
-  </main>
-
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="CV.html">CV</a><a href="pattern%20in%20flat.html">Pattern in Flat</a><a href="LINE.html">Line</a><a href="MARINE%20CAMP.html">Marine Camp</a><a href="Hwang.html">Hwang-Hak Village</a><a href="unknown%20dawn.html">Unknown Dawn</a><a href="Relationship.html">An Anonymous Relationship</a><a href="Amount-yale.html">The Amount of Dependence</a><a href="emergency.html">Emergency</a><a href="first-experience.html" aria-current="page">First Experience</a><a href="publications-yale.html">Oorie</a><a href="space-man-yale.html">Space Man</a><a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+    <main>
+      <header class="title"><h1>First<br>Experience</h1></header>
+      <div class="back"><a href="index.html">Back to home</a></div>
+      <section class="statement"><p>A repetitive gesture becomes an eighteen-minute exercise<br>in learning, attention, and duration.</p></section>
+      <section class="details" aria-label="Work details"><dl><dt>Title</dt><dd>First Experience</dd><dt>Format</dt><dd>Single-channel video</dd><dt>Duration</dt><dd>18 minutes</dd></dl></section>
+      <section class="video" aria-label="First Experience video"><div class="video-frame"><iframe src="https://player.vimeo.com/video/362550388" title="First Experience by Seongsu Kim" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><div class="caption">First Experience — video, 18 minutes</div></section>
+      <figure><img src="https://freight.cargo.site/t/original/i/523c70305224af8cadf7481f9619ed8c9c56021d6a576bdf962273bbc59d8651/Screenshot-2019-05-07-at-00.45.30.png" alt="Still from First Experience" loading="lazy"><figcaption><span>Video still</span><span>First Experience</span></figcaption></figure>
+      <footer class="footer"><span>© Seongsu Kim</span><a href="contact.html">Contact</a></footer>
+    </main>
+  </div>
+  <dialog class="lightbox" aria-label="Expanded image viewer"><button class="lightbox-close" type="button" aria-label="Close image">×</button><img class="lightbox-image" alt=""><div class="lightbox-caption"></div></dialog>
+  <script>
+    const source=document.querySelector('figure img');
+    const lightbox=document.querySelector('.lightbox');
+    const enlarged=lightbox.querySelector('.lightbox-image');
+    const lightboxCaption=lightbox.querySelector('.lightbox-caption');
+    source.addEventListener('click',()=>{ enlarged.src=source.currentSrc||source.src; enlarged.alt=source.alt; lightboxCaption.textContent=document.querySelector('figcaption').textContent.trim(); lightbox.showModal(); });
+    lightbox.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());
+    lightbox.addEventListener('click',event=>{ if(event.target===lightbox) lightbox.close(); });
+  </script>
 </body>
 </html>

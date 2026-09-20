@@ -1,61 +1,128 @@
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>An Anonymouse Relationship</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An Anonymous Relationship, a photographic series by Seongsu Kim.">
+  <title>An Anonymous Relationship — Seongsu Kim</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --amber:#f3c6a6; --blue:#c5c9ed; --violet:#dbcbb9; --grey:rgba(220,220,220,.86); }
+    *,*::before,*::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background:#c9c9c9; }
+    body.animations-paused { background-image:none; background-color:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible,button:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:linear-gradient(180deg,rgba(240,240,240,.94),rgba(190,190,190,.84)); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .pause-button { width:100%; margin:0 0 var(--gap); padding:9px 8px; border:2px solid #000; border-radius:0; background:linear-gradient(90deg,var(--violet),#f0e8ff); color:#000; font:inherit; font-weight:bold; text-align:left; cursor:pointer; }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#e4f6ff 0%,var(--blue) 58%,#50ace4 100%); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:22px 28px 27px; background:linear-gradient(105deg,var(--amber) 0%,#ffd765 62%,#fff1b8 100%); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(50px,5.7vw,90px); font-weight:800; line-height:.82; letter-spacing:-.065em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(228,246,255,.86)); text-align:right; }
+    .intro { grid-column:1/span 2; padding:16px; background:linear-gradient(145deg,#efe7ff 0%,var(--violet) 58%,#a77dff 100%); font-size:27px; font-weight:bold; line-height:1.06; }
+    .intro p { margin:0; }
+    .details { grid-column:3/-1; padding:16px; background:linear-gradient(155deg,#e5f7ff 0%,var(--blue) 56%,#45a6df 100%); font-size:13px; line-height:1.45; }
+    .details dl { display:grid; grid-template-columns:70px 1fr; gap:8px 12px; margin:0; }
+    .details dt,.details dd { margin:0; }
+    .essay { grid-column:1/-1; display:grid; grid-template-columns:1fr; gap:1px; background:#000; }
+    .essay div { padding:18px; background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(232,246,255,.92)); font-size:14px; line-height:1.45; }
+    .essay p { margin:0 0 14px; }
+    .essay p:last-child { margin-bottom:0; }
+    .section-title { grid-column:1/-1; padding:11px 14px; background:linear-gradient(90deg,var(--amber),#fff0a8); }
+    .section-title h2 { margin:0; font-size:28px; line-height:1; text-transform:uppercase; }
+    .gallery { grid-column:1/-1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--gap); align-items:start; }
+    .gallery figure { display:flex; flex-direction:column; min-width:0; }
+    .gallery figure:last-child:nth-child(odd) { grid-column:1/-1; }
+    .quote { grid-column:1/-1; padding:18px; background:linear-gradient(110deg,#efe7ff,var(--violet) 60%,#a77dff); font-size:23px; font-weight:bold; line-height:1.12; }
+    .quote p { margin:0; }
+    figure { margin:0; background:#fff; }
+    figure img { display:block; width:100%; height:auto; cursor:zoom-in; }
+    figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; background:linear-gradient(90deg,#fff,#e9e9e9); font-size:11px; }
+    .wide { grid-column:1/-1; }
+    .half { grid-column:span 2; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:linear-gradient(90deg,rgba(239,239,239,.96),rgba(187,187,187,.86)); font-size:12px; }
+    .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
+    .lightbox[open] { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; align-items:center; }
+    .lightbox::backdrop { background:rgba(0,0,0,.94); }
+    .lightbox-image { display:block; max-width:100%; max-height:calc(100vh - 86px); margin:auto; object-fit:contain; }
+    .lightbox-caption { position:fixed; left:20px; right:20px; bottom:14px; color:#fff; font-size:12px; text-align:center; }
+    .lightbox button { border:0; border-radius:0; background:transparent; color:#fff; font:32px Arial,Helvetica,sans-serif; cursor:pointer; }
+    .lightbox button:hover { color:var(--amber); }
+    .lightbox-close { position:fixed; top:12px; right:18px; z-index:2; width:44px; height:44px; font-size:30px!important; }
+    .lightbox-prev,.lightbox-next { align-self:stretch; }
+    @media (max-width:1040px) { body { background-size:280px auto; } .layout { display:block; width:100%; min-width:0; } .sidebar { position:relative; width:100%; min-height:0; } .identity { margin-bottom:18px; } main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.footer { grid-column:1/-1; } .half { grid-column:span 1; } h1 { font-size:clamp(48px,14vw,86px); } }
+    @media (max-width:520px) { body { background-size:240px auto; } main { grid-template-columns:1fr; } .title,.back,.intro,.details,.essay,.section-title,.gallery,.quote,.wide,.half,.footer { grid-column:1; } .essay,.gallery { grid-template-columns:1fr; } .gallery figure:last-child:nth-child(odd) { grid-column:1; } .footer { flex-direction:column; gap:8px; } }
+  .source-sheet { background:#fff; padding:12px; } .source-sheet summary { cursor:pointer; font-size:13px; padding:8px 0; } .source-sheet[open] summary { margin-bottom:12px; } h1 { line-height:.95; } figcaption { flex-wrap:wrap; }
+
+body { background-color:#c9c9c9; background-image:url("https://thumbs.gfycat.com/TotalSimplisticAphid-size_restricted.gif"); background-size:15%; background-repeat:repeat; background-attachment:fixed; }
+body.animations-paused { background-image:none; }
+.title { background:linear-gradient(105deg,#becba5,#e5e8cc 70%,#f3ead8); }
+.nav-box { background:linear-gradient(145deg,#eee3d4,#ceb7a0 65%,#b5a18d); }
+.pause-button { background:linear-gradient(90deg,#d7dce9,#f4f1ed); }
+h1 { font-size:clamp(30px,4.4vw,64px); line-height:.95; letter-spacing:-.065em; overflow-wrap:anywhere; }
+figcaption { line-height:1.45; }
+@media(max-width:520px) { .lightbox[open] { grid-template-columns:40px minmax(0,1fr) 40px; } body { background-size:240px auto; } }
+
+.relationship-text { grid-column:1/-1; padding:30px 32px 34px; background:linear-gradient(115deg,#fffef8 0%,#f6f4e9 80%,#e9edda 100%); }
+.text-label { display:flex; justify-content:space-between; gap:16px; border-bottom:1px solid #bcc2ad; padding-bottom:13px; margin-bottom:25px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+.relationship-text p { max-width:62ch; margin:0 0 22px; font-size:16px; line-height:1.75; color:#20221d; }
+.relationship-text .text-lead { margin-bottom:28px; font-size:clamp(22px,2.3vw,29px); font-weight:700; line-height:1.25; letter-spacing:-.025em; }
+.text-dateline { margin-top:32px; padding-top:16px; border-top:1px solid #bcc2ad; font-size:12px; line-height:1.6; }
+.text-dateline span { display:block; color:#565c4c; }
+@media(max-width:520px) { .relationship-text { padding:22px 20px; } .relationship-text p { font-size:15px; line-height:1.7; } }
+</style>
 </head>
-<style>
-    body {
-        background-color: #000000;
-        background-image: url("https://thumbs.gfycat.com/TotalSimplisticAphid-size_restricted.gif");
-        background-repeat: repeat;
-        background-size: 15%
-    }
-    
-    div.background-module {
-        position: absolute;
-        z-index: 1;
-        top: 0px;
-        left: 0px;
-    }
-    
-    div.background_module_photo {
-        position: absolute;
-        z-index: 1;
-        top: 78px;
-        left: 0px;
-        width: 810px;
-        height: 723px;
-    }
-    
-    div.background_module_stripe {
-        position: fixed;
-        z-index: 2;
-        top: 0px;
-        left: 336px;
-        width: 324px;
-    }
-</style>
- <h1><span style="background-color:#088A29">An Anonymouse Relationship</span></h1>
-    
-
 <body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
 
-<img src="https://seongsukim.github.io/relationship_01.png" width="650" height="800">
-<br><br>
+      <button class="pause-button" type="button" aria-pressed="false">Pause animations</button>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="CV.html">CV</a><a href="pattern%20in%20flat.html">Pattern in Flat</a><a href="LINE.html">Line</a><a href="MARINE%20CAMP.html">Marine Camp</a><a href="Hwang.html">Hwang-Hak Village</a><a href="unknown%20dawn.html">Unknown Dawn</a><a href="Relationship.html" aria-current="page">An Anonymous Relationship</a><a href="Amount-yale.html">The Amount of Dependence</a><a href="emergency.html">Emergency</a><a href="first-experience.html">First Experience</a><a href="publications-yale.html">Oorie</a><a href="space-man-yale.html">Space Man</a><a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+    <main><header class="title"><h1>An Anonymous<br>Relationship</h1></header><div class="back"><a href="index.html">Back to home</a></div><article class="relationship-text" aria-label="An Anonymous Relationship — artist’s text">
+<div class="text-label">An Anonymous Relationship <span>2017</span></div>
+<p class="text-lead">It’s not that I don’t have friends. But lately, whether by choice or circumstance, I feel alone.</p>
+<p>I have ten or fifteen people I consider close friends. Maybe they’re just more capable than I am: they got through university without much trouble and, despite the usual anguish of job hunting, found good jobs before they even graduated. Some went abroad to study and are now teaching. More than eighty percent married in their twenties and have families of their own; some already have babies.</p>
+<p>Somehow, we’ve drifted apart. For years now, we’ve only managed to meet when our schedules happen to align. I’ve gradually retreated into a world of my own. I have far too much time on my hands, so I spend my days talking away in our group chat, telling them I can always work around their schedules. We met just twice last year. This year, we even skipped our New Year’s gathering.</p>
+<p>I know, rationally, that I have to accept this reality. Still, I keep feeling lonely and left out. Whenever we do meet, I’m the one making all the fuss—singing, digging up old memories and photographs. I feel as though I have to do something, anything, to make the occasion count. I want to show them that I’m getting on just fine too, but this is how things really are. I know everyone has their difficulties and only posts the good parts on social media. Still, as the saying goes, we believe what we see. Everyone looks happy, while I seem to do nothing but fill my stomach, drift from café to café and spend my evenings getting pleasantly drunk. It’s a feeling that returns every night, and it’s hard to bear.</p>
+<p>Ninety percent of my life these days seems to be spent on thoughts like these—so what can I say? They’re not thoughts I want to have. Of course this life eats away at my sense of self, and with my mind in such an unhealthy state, it’s hardly surprising that my work and studies aren’t going well. All the talk of art and photography around me simply goes in one ear and out the other.</p>
+<p>After two or three years of this, I’ve come to feel like nothing more than a shell: the outside still intact, the inside empty. I’m ashamed. I have little to show for myself, yet my pride is absurdly large. Somehow, that is how I’m getting through the summer of 2017.</p>
+<p>Even now, as I write this, I desperately want a beer. I’m on a diet, though, so I’ve spent thirty minutes debating whether to go to the convenience store and buy one. Then I catch sight of myself in the mirror, and I can’t stand what I see.</p>
+<footer class="text-dateline">June 2017 · Seongsu Kim <span>(Seoul / Gwangju / the countryside)</span></footer>
+</article>
+<figure class="wide"><img src="assets/relationship/korean-poster-reverse.png" width="594" height="837" alt="익명적 관계 — 한글 원문 포스터 뒷면" tabindex="0" role="button" aria-label="Enlarge Korean poster reverse" loading="lazy"><figcaption>An Anonymous Relationship · Poster reverse (Korean)</figcaption></figure>
 
-
-
+<figure class="wide"><img src="https://freight.cargo.site/t/original/i/0d83bbc9dc594ff96cd29f863a431673d2a9fd618b3e34390622f56f7565215b/1_An-anonymous-relationship_40X35-cm_archival-pigment-print_2017.jpg" width="2362" height="1890" alt="An Anonymous Relationship 1 · 40 × 35 cm · Archival pigment print · 2017" tabindex="0" role="button" aria-label="Enlarge image 3" loading="lazy"><figcaption>An Anonymous Relationship 1 · 40 × 35 cm · Archival pigment print · 2017</figcaption></figure>
+<figure class="wide"><img src="https://freight.cargo.site/t/original/i/0af7f36635e5dbc821230e024db8ad1cf398c2003f6b5e1c3feaf5110eba0599/4_An-anonymous-relationship_40X35-cm_archival-pigment-print_2017.jpg" width="2362" height="1890" alt="An Anonymous Relationship 4 · 40 × 35 cm · Archival pigment print · 2017" tabindex="0" role="button" aria-label="Enlarge image 4" loading="lazy"><figcaption>An Anonymous Relationship 4 · 40 × 35 cm · Archival pigment print · 2017</figcaption></figure>
+<figure class="wide"><img src="https://freight.cargo.site/t/original/i/16a043e140f27bba0be99e676c0f77e4b7bd1d4dc242b5946e187680e93d42f3/5_An-anonymous-relationship_40X35-cm_archival-pigment-print_2017.jpg" width="2362" height="1890" alt="An Anonymous Relationship 5 · 40 × 35 cm · Archival pigment print · 2017" tabindex="0" role="button" aria-label="Enlarge image 5" loading="lazy"><figcaption>An Anonymous Relationship 5 · 40 × 35 cm · Archival pigment print · 2017</figcaption></figure>
+<figure class="wide"><img src="https://freight.cargo.site/t/original/i/82a819ff3eb940122bfe1c7808796d9b29574e0aa09163c4bdc5324af58f8628/2_An-anonymous-relationship_56X70-cm_archival-pigment-print_2017.jpg" width="1890" height="2362" alt="An Anonymous Relationship 2 · 56 × 70 cm · Archival pigment print · 2017" tabindex="0" role="button" aria-label="Enlarge image 6" loading="lazy"><figcaption>An Anonymous Relationship 2 · 56 × 70 cm · Archival pigment print · 2017</figcaption></figure>
+<figure class="wide"><img src="https://freight.cargo.site/t/original/i/59287231391edb59354dd4e2a6426985bdaea166da5ebd75fb208073f3de071b/3_An-anonymous-relationship_56X70-cm_archival-pigment-print_2017.jpg" width="1890" height="2362" alt="An Anonymous Relationship 3 · 56 × 70 cm · Archival pigment print · 2017" tabindex="0" role="button" aria-label="Enlarge image 7" loading="lazy"><figcaption>An Anonymous Relationship 3 · 56 × 70 cm · Archival pigment print · 2017</figcaption></figure><footer class="footer"><span>© Seongsu Kim</span><a href="contact.html">Contact</a></footer></main>
+  </div>
+  <dialog class="lightbox" aria-label="Expanded image viewer"><button class="lightbox-prev" type="button" aria-label="Previous image">‹</button><img class="lightbox-image" alt=""><button class="lightbox-next" type="button" aria-label="Next image">›</button><button class="lightbox-close" type="button" aria-label="Close image">×</button><div class="lightbox-caption"></div></dialog>
+  <script>
+    const pauseButton=document.querySelector('.pause-button');
+pauseButton.addEventListener('click',()=>{const paused=document.body.classList.toggle('animations-paused');pauseButton.textContent=paused?'Play animations':'Pause animations';pauseButton.setAttribute('aria-pressed',String(paused));});
+const images=[...document.querySelectorAll('figure img')];
+    const lightbox=document.querySelector('.lightbox');
+    const enlarged=lightbox.querySelector('.lightbox-image');
+    const lightboxCaption=lightbox.querySelector('.lightbox-caption');
+    let current=0;
+    function show(index){ current=(index+images.length)%images.length; const image=images[current]; enlarged.src=image.currentSrc||image.src; enlarged.alt=image.alt; lightboxCaption.textContent=image.closest('figure').querySelector('figcaption').textContent.trim(); }
+    images.forEach((image,index)=>{ const open=()=>{show(index);lightbox.showModal();}; image.addEventListener('click',open); image.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();open();}}); });
+    lightbox.querySelector('.lightbox-prev').addEventListener('click',()=>show(current-1));
+    lightbox.querySelector('.lightbox-next').addEventListener('click',()=>show(current+1));
+    lightbox.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());
+    lightbox.addEventListener('click',event=>{ if(event.target===lightbox) lightbox.close(); });
+    document.addEventListener('keydown',event=>{ if(!lightbox.open)return; if(event.key==='ArrowLeft')show(current-1); if(event.key==='ArrowRight')show(current+1); });
+  </script>
 </body>
-
 </html>
-<style>
-@media (max-width: 900px) {
-    body { margin: 0 !important; padding: 10px !important; background-size: cover !important; }
-    img, iframe, video { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
-    div, span, p, h1, h2, h3, h4, h5, h6 { max-width: 100vw !important; box-sizing: border-box !important; }
-    div[style] { width: 100% !important; max-width: 100% !important; height: auto !important; max-height: none !important; }
-    .background_module_photo, .background-module, .background_module_stripe { position: relative !important; width: 100% !important; top: auto !important; left: auto !important; height: auto !important; }
-}
-</style>
