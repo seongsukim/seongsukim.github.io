@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Amount of Dependence, a 2018 project by Seongsu Kim.">
+  <title>THE AMOUNT OF DEPENDENCE — SEONGSU KIM</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --yellow:#fff800; --pink:#f78181; --green:#8cff98; --grey:rgba(220,220,220,.84); }
+    *,*::before,*::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:var(--grey); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .nav-box { padding:14px 12px 20px; background:var(--pink); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:24px 32px 28px; background:var(--yellow); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(50px,5.4vw,85px); font-weight:800; line-height:.82; letter-spacing:-.06em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:rgba(255,255,255,.94); text-align:right; }
+    .intro { grid-column:1/span 2; padding:16px; background:var(--pink); font-size:25px; font-weight:bold; line-height:1.08; }
+    .meta { grid-column:3/-1; padding:16px; background:var(--green); font-size:13px; line-height:1.45; }
+    .meta strong { display:block; margin-bottom:10px; font-size:20px; }
+    .narrative { grid-column:1/-1; columns:2; column-gap:28px; padding:18px; background:rgba(255,255,255,.94); font-size:14px; line-height:1.45; }
+    .narrative p { margin:0 0 16px; break-inside:avoid; }
+    .section-title { grid-column:1/-1; padding:11px 14px; background:var(--yellow); }
+    .section-title h2 { margin:0; font-size:36px; line-height:1; text-transform:uppercase; }
+    .vestige-text { grid-column:1/span 2; padding:16px; background:var(--green); font-size:20px; line-height:1.22; }
+    .vestige-text h2 { margin:0 0 22px; font-size:38px; line-height:.9; text-transform:uppercase; }
+    figure { margin:0; background:#fff; }
+    figure img { display:block; width:100%; height:auto; cursor:zoom-in; }
+    figcaption { display:flex; justify-content:space-between; gap:16px; padding:7px 9px 9px; font-size:11px; }
+    .wide { grid-column:1/-1; }
+    .half { grid-column:span 2; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; padding:12px; background:var(--grey); font-size:12px; }
+    .lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:#fff; overflow:hidden; }
+    .lightbox[open] { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; align-items:center; }
+    .lightbox::backdrop { background:rgba(0,0,0,.94); }
+    .lightbox-image { display:block; max-width:100%; max-height:calc(100vh - 86px); margin:auto; object-fit:contain; }
+    .lightbox-caption { position:fixed; left:20px; right:20px; bottom:14px; color:#fff; font-size:12px; text-align:center; }
+    .lightbox button { border:0; border-radius:0; background:transparent; color:#fff; font:32px Arial,Helvetica,sans-serif; cursor:pointer; }
+    .lightbox button:hover { color:var(--yellow); }
+    .lightbox-close { position:fixed; top:12px; right:18px; z-index:2; width:44px; height:44px; font-size:30px!important; }
+    .lightbox-prev,.lightbox-next { align-self:stretch; }
+    @media (max-width:900px) {
+      .layout { display:block; width:100%; min-width:0; }
+      .sidebar { position:relative; width:100%; min-height:0; }
+      .identity { margin-bottom:18px; }
+      main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); }
+      .title,.back,.intro,.meta,.narrative,.section-title,.wide,.footer { grid-column:1/-1; }
+      .half,.vestige-text { grid-column:span 1; }
+      h1 { font-size:clamp(52px,15vw,92px); }
+    }
+    @media (max-width:520px) {
+      main { grid-template-columns:1fr; }
+      .title,.back,.intro,.meta,.narrative,.section-title,.wide,.half,.vestige-text,.footer { grid-column:1; }
+      .back { text-align:left; }
+      .narrative { columns:1; }
+      .lightbox[open] { grid-template-columns:44px minmax(0,1fr) 44px; }
+      .lightbox-prev,.lightbox-next { font-size:25px!important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index-sheep.html">Home</a><a href="CV.html">CV</a><a href="pattern%20in%20flat.html">Pattern in Flat</a><a href="LINE.html">Line</a><a href="MARINE%20CAMP.html">Marine Camp</a><a href="Hwang.html">Hwang-Hak Village</a><a href="unknown%20dawn.html">Unknown Dawn</a><a href="Relationship.html">An Anonymous Relationship</a><a href="Amount-yale.html" aria-current="page">The Amount of Dependence</a><a href="emergency.html">Emergency</a><a href="first-experience.html">First Experience</a><a href="publications-yale.html">Oorie</a><a href="space-man-yale.html">Space Man</a><a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+    <main>
+      <header class="title"><h1>The Amount<br>of Dependence</h1></header>
+      <div class="back"><a href="index-sheep.html">Back to home</a></div>
+      <section class="intro">A record of dependence, adaptation and the everyday objects that remain.</section>
+      <section class="meta"><strong>TESCO</strong>40 × 60 cm<br>Archival pigment print<br>2018</section>
+      <section class="narrative">
+        <p>When I first came to this city, my heart was very nervous and trembling. Because people feel uneasy when they are in an unfamiliar environment.</p>
+        <p>I came to a foreign country for the first time. Of course, I had a lot of anxiety and needed a place to depend on.</p>
+        <p>Moreover, it was very difficult to meet Koreans in this city. It was the supermarket called “TESCO” where I came to solve the problem that I faced for the first time with such a mind. Ever since I found this place, I visit here every day. There, I was able to find food, cosmetics, and various necessities for life. It has always been useful to me. The first was very much, the next day was a little more. I was able to adapt to this life and this city.</p>
+        <p>It took me two weeks to stay in this city. All I have left is the envelopes and receipts I received when I bought the goods. This is evidence that I have relied heavily on my dependence there. Dependence has fallen over time, which means I am getting used to it.</p>
+      </section>
+      <figure class="wide"><img src="assets/amount/tesco-bags-balanced-v2.jpg" alt="TESCO plastic bags, The Amount of Dependence" width="1842" height="1486"><figcaption><span>TESCO · Archival pigment print</span><span>2018</span></figcaption></figure>
+      <section class="section-title"><h2>Vestige — Receipt</h2></section>
+      <section class="vestige-text"><h2>Receipt</h2>At first I had to buy everything from one to ten. TESCO provided me the best service.<br><br>I could get everything from shampoo to food. I felt as if I had met an oasis in the desert.</section>
+      <figure class="half"><img src="assets/amount/receipts-close.jpg" alt="Vestige receipt detail 1" width="1490" height="1046" loading="lazy"><figcaption><span>Vestige detail</span><span>01</span></figcaption></figure>
+      <figure class="half"><img src="assets/amount/receipts-distance.jpg" alt="Vestige receipt detail 2" width="1490" height="1186" loading="lazy"><figcaption><span>Vestige detail</span><span>02</span></figcaption></figure>
+      <figure class="half"><img src="assets/amount/three-bags.jpg" alt="Vestige detail 3, three TESCO bags" width="1218" height="972" loading="lazy"><figcaption><span>Vestige detail</span><span>03</span></figcaption></figure>
+      <section class="section-title"><h2>Installation View</h2></section>
+      <figure class="wide"><img src="assets/amount/installation-view.jpg" alt="The Amount of Dependence installation view" width="1760" height="1172" loading="lazy"><figcaption><span>The Amount of Dependence</span><span>Installation view · 2018</span></figcaption></figure>
+      <footer class="footer"><span>© Seongsu Kim</span><a href="assets/amount/amount-text.txt">Text transcript</a></footer>
+    </main>
+  </div>
+  <dialog class="lightbox" aria-label="Expanded Amount of Dependence image"><button class="lightbox-close" type="button" aria-label="Close image">×</button><button class="lightbox-prev" type="button" aria-label="Previous image">←</button><img class="lightbox-image" src="" alt=""><button class="lightbox-next" type="button" aria-label="Next image">→</button><div class="lightbox-caption" aria-live="polite"></div></dialog>
+  <script>
+    const galleryImages=Array.from(document.querySelectorAll('main figure img'));const lightbox=document.querySelector('.lightbox');const lightboxImage=document.querySelector('.lightbox-image');const lightboxCaption=document.querySelector('.lightbox-caption');let currentImage=0;
+    function showImage(index){currentImage=(index+galleryImages.length)%galleryImages.length;const source=galleryImages[currentImage];lightboxImage.src=source.currentSrc||source.src;lightboxImage.alt=source.alt;lightboxCaption.textContent=`${source.alt} · ${currentImage+1} / ${galleryImages.length}`;}
+    function openLightbox(index){showImage(index);lightbox.showModal();}
+    galleryImages.forEach((image,index)=>{image.tabIndex=0;image.setAttribute('role','button');image.setAttribute('aria-label',`${image.alt}. Open large image.`);image.addEventListener('click',()=>openLightbox(index));image.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(index);}});});
+    document.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());document.querySelector('.lightbox-prev').addEventListener('click',()=>showImage(currentImage-1));document.querySelector('.lightbox-next').addEventListener('click',()=>showImage(currentImage+1));lightbox.addEventListener('click',event=>{if(event.target===lightbox)lightbox.close();});lightbox.addEventListener('keydown',event=>{if(event.key==='ArrowLeft')showImage(currentImage-1);if(event.key==='ArrowRight')showImage(currentImage+1);});
+  </script>
+</body>
+</html>
