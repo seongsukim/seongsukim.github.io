@@ -1,83 +1,96 @@
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>contacts</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact visual artist Seongsu Kim.">
+  <title>Contact — Seongsu Kim</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --orange:#ff6b35; --sky:#75c9f1; --lilac:#c7a7ff; --grey:rgba(220,220,220,.88); }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { font-size:16px; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background-color:#000; background-image:url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmVvc2xqZzc4NGw4ZDB1ZTVhbnhpaDYxZHZsMDF1YTZ5Zndtc2J2YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/95cVhso0Xfpcr3qdUo/giphy.gif"); background-repeat:repeat; background-size:20%; background-attachment:fixed; }
+    body.animations-paused { background-image:none; background-color:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible,button:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .page-grid { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)) 1fr; gap:var(--gap); min-height:100vh; }
+    .stripe { position:fixed; z-index:0; inset:0 auto 0 calc(var(--unit) * 2 + var(--gap)); width:calc(var(--unit) * 2); background:rgba(255,255,255,.16); pointer-events:none; }
+    .sidebar { position:sticky; z-index:2; top:0; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:var(--grey); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .pause-button { width:100%; margin:0 0 var(--gap); padding:9px 8px; border:2px solid #000; border-radius:0; background:linear-gradient(90deg,var(--lilac) 0%,#f4edff 100%); color:#000; font:inherit; font-weight:bold; text-align:left; cursor:pointer; }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#dff5ff 0%,var(--sky) 58%,#5db8e5 100%); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 120px; align-content:start; }
+    .title { grid-column:1/-1; padding:22px 28px 27px; background:linear-gradient(105deg,var(--orange) 0%,#ff9b51 54%,#ffd4a8 100%); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(66px,7vw,112px); font-weight:800; line-height:.8; letter-spacing:-.065em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(223,245,255,.86)); text-align:right; }
+    .invitation { grid-column:1/span 2; min-height:calc(var(--unit) * 2); padding:18px; background:linear-gradient(135deg,#e5f7ff 0%,var(--sky) 48%,#409fd2 100%); font-size:28px; font-weight:bold; line-height:1.05; }
+    .invitation p { margin:0; }
+    .contact-card { grid-column:3/-1; min-height:calc(var(--unit) * 2); padding:18px; background:linear-gradient(155deg,#f0e8ff 0%,var(--lilac) 55%,#a878ff 100%); }
+    .contact-card h2 { margin:0 0 34px; font-size:17px; }
+    .contact-list { margin:0; padding:0; list-style:none; font-size:18px; line-height:1.35; }
+    .contact-list li { margin-bottom:16px; overflow-wrap:anywhere; }
+    .contact-list small { display:block; margin-bottom:2px; font-size:11px; text-transform:uppercase; }
+    .note { grid-column:1/-1; padding:18px; background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.78) 68%,rgba(199,167,255,.72) 100%); font-size:15px; line-height:1.4; }
+    .note p { max-width:560px; margin:0; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; gap:20px; padding:12px; background:var(--grey); font-size:12px; }
+    @media (max-width:1200px) { .page-grid { grid-template-columns:calc(var(--unit) * 2) minmax(0,1fr); } }
+    @media (max-width:900px) { body { background-size:280px auto; } .page-grid { display:block; } .stripe { display:none; } .sidebar { position:relative; width:100%; min-height:0; } .identity { margin-bottom:18px; } main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); } .title,.back,.note,.footer { grid-column:1/-1; } .invitation { grid-column:1; } .contact-card { grid-column:2; } h1 { font-size:clamp(58px,17vw,108px); } }
+    @media (max-width:600px) { body { background-size:240px auto; } main { grid-template-columns:1fr; } .title,.back,.invitation,.contact-card,.note,.footer { grid-column:1; } .invitation,.contact-card { min-height:0; } .footer { flex-direction:column; } }
+  </style>
 </head>
-<style>
-    body {
-        background-color: #000000;
-        background-image: url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmVvc2xqZzc4NGw4ZDB1ZTVhbnhpaDYxZHZsMDF1YTZ5Zndtc2J2YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/95cVhso0Xfpcr3qdUo/giphy.gif");
-        background-repeat: repeat;
-        background-size: 20%
-    }
-    
-    div.background-module {
-        position: absolute;
-        z-index: 1;
-        top: 0px;
-        left: 0px;
-    }
-    
-    div.background_module_photo {
-        position: absolute;
-        z-index: 1;
-        top: 78px;
-        left: 0px;
-        width: 810px;
-        height: 723px;
-    }
-    
-    div.background_module_stripe {
-        position: fixed;
-        z-index: 2;
-        top: 0px;
-        left: 336px;
-        width: 324px;
-    }
-</style>
- <h1><span style="background-color:#FFFFFF">CONTACT</span></h1>
-    <div style="width: 260px;
-                background:
-                    
-                        #FF8000;
-                    
-                max-height: 517px;
-                overflow: auto; margin-bottom: 1px;">
-            <div style="padding: 12px;
-                    font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 25px; color: #000000;">
-
-                <p style="font-size: 14px; font-weight: bold; margin-bottom: 9px;">
-                    
-                </p>
-
 <body>
-    
-    <p>SEONGSU KIM</p>
-    
-    <a href="http://instagram.com/seongsu.jpg">INSTAGRAM</a>
-    <p>+44 7935 204232</p>
-    <p>Seongsu.psd@gmail.com</p>
-</div>
-</div>
+  <div class="stripe" aria-hidden="true"></div>
+  <div class="page-grid">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <button class="pause-button" type="button" aria-pressed="false">Pause animations</button>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="CV.html">CV</a>
+        <a href="pattern%20in%20flat.html">Pattern in Flat</a>
+        <a href="LINE.html">Line</a>
+        <a href="MARINE%20CAMP.html">Marine Camp</a>
+        <a href="Hwang.html">Hwang-Hak Village</a>
+        <a href="unknown%20dawn.html">Unknown Dawn</a>
+        <a href="Relationship.html">An Anonymous Relationship</a>
+        <a href="Amount-yale.html">The Amount of Dependence</a>
+        <a href="emergency.html">Emergency</a>
+        <a href="first-experience.html">First Experience</a>
+        <a href="publications-yale.html">Oorie</a>
+        <a href="space-man-yale.html">Space Man</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </aside>
 
-</div>
-</div>
-
-    </div>
-</div>
-
-
+    <main>
+      <header class="title"><h1>Contact</h1></header>
+      <div class="back"><a href="index.html">Back to home</a></div>
+      <section class="invitation" aria-labelledby="contact-heading">
+        <p id="contact-heading">For exhibitions,<br>collaborations,<br>and enquiries.</p>
+      </section>
+      <section class="contact-card" aria-label="Contact details">
+        <h2>SEONGSU KIM</h2>
+        <ul class="contact-list">
+          <li><small>Email</small><a href="mailto:Seongsu.psd@gmail.com">Seongsu.psd@gmail.com</a></li>
+          <li><small>Instagram</small><a href="https://www.instagram.com/seongsu.jpg/" target="_blank" rel="noopener noreferrer">@seongsu.jpg</a></li>
+          <li><small>Telephone</small><a href="tel:+447935204232">+44 7935 204232</a></li>
+        </ul>
+      </section>
+      <section class="note"><p>Please get in touch by email for project enquiries, exhibition invitations, studio visits, or further information about the work.</p></section>
+      <footer class="footer"><span>© Seongsu Kim</span><a href="index.html">Home</a></footer>
+    </main>
+  </div>
+  <script>
+    const pauseButton=document.querySelector('.pause-button');
+    pauseButton.addEventListener('click',()=>{
+      const paused=document.body.classList.toggle('animations-paused');
+      pauseButton.textContent=paused?'Play animations':'Pause animations';
+      pauseButton.setAttribute('aria-pressed',String(paused));
+    });
+  </script>
 </body>
-
 </html>
-<style>
-@media (max-width: 900px) {
-    body { margin: 0 !important; padding: 10px !important; background-size: cover !important; }
-    img, iframe, video { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
-    div, span, p, h1, h2, h3, h4, h5, h6 { max-width: 100vw !important; box-sizing: border-box !important; }
-    div[style] { width: 100% !important; max-width: 100% !important; height: auto !important; max-height: none !important; }
-    .background_module_photo, .background-module, .background_module_stripe { position: relative !important; width: 100% !important; top: auto !important; left: auto !important; height: auto !important; }
-}
-</style>
