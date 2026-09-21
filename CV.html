@@ -1,130 +1,126 @@
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <title>CV</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Curriculum vitae of visual artist Seongsu Kim.">
+  <title>CV — Seongsu Kim</title>
+  <style>
+    :root { --unit:162px; --gap:12px; --amber:#c9d7a7; --blue:#a9d6e5; --violet:#d9c3df; --pink:#f0b8c6; --grey:rgba(220,220,220,.86); }
+    *, *::before, *::after { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:#000; font-family:Arial,Helvetica,sans-serif; background:#c9c9c9; }
+    a { color:#000; text-decoration:underline; text-underline-offset:2px; }
+    a:hover { color:#fff; background:#000; }
+    a:focus-visible { outline:3px solid #000; outline-offset:2px; }
+    .layout { display:grid; grid-template-columns:calc(var(--unit) * 2) minmax(0,calc(var(--unit) * 4 + var(--gap) * 3)); gap:var(--gap); width:min-content; min-width:100%; align-items:start; }
+    .sidebar { position:sticky; top:0; z-index:3; width:calc(var(--unit) * 2); min-height:100vh; padding:var(--gap); background:linear-gradient(180deg,rgba(240,240,240,.96),rgba(190,190,190,.86)); }
+    .identity { margin-bottom:36px; font-size:15px; line-height:1.15; }
+    .identity strong { display:block; font-size:20px; }
+    .nav-box { padding:14px 12px 20px; background:linear-gradient(145deg,#e5f7ff 0%,var(--blue) 58%,#5eabbc 100%); }
+    .nav-box a { display:block; width:max-content; max-width:100%; margin-bottom:14px; font-size:16px; line-height:1.15; }
+    .nav-box a:last-child { margin-bottom:0; }
+    main { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,var(--unit)); grid-auto-flow:row dense; gap:var(--gap); width:calc(var(--unit) * 4 + var(--gap) * 3); padding:var(--gap) 0 100px; }
+    .title { grid-column:1/-1; padding:16px 28px 24px; background:linear-gradient(105deg,var(--amber) 0%,#dce2bd 60%,#f4f2dd 100%); overflow:hidden; }
+    h1 { margin:0; font-size:clamp(80px,9vw,138px); font-weight:800; line-height:.78; letter-spacing:-.075em; text-transform:uppercase; }
+    .back { grid-column:1/-1; padding:12px; background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(228,246,255,.86)); text-align:right; }
+    .profile { grid-column:1/-1; padding:18px; background:linear-gradient(145deg,#efe7ff 0%,var(--violet) 56%,#b994c6 100%); }
+    .profile h2, .cv-section h2 { margin:0 0 18px; font-size:27px; line-height:1; letter-spacing:-.04em; text-transform:uppercase; }
+    .profile p { margin:0 0 8px; font-size:19px; line-height:1.2; }
+    .profile p:last-child { margin-bottom:0; }
+    .cv-section { min-width:0; padding:16px; background:linear-gradient(155deg,#e7f8ff 0%,var(--blue) 56%,#5ca8b7 100%); }
+    .cv-section:nth-of-type(2n) { background:linear-gradient(145deg,#fff0f3 0%,var(--pink) 58%,#d77f9b 100%); }
+    .cv-section h2 { font-size:24px; }
+    .cv-entry { margin:0 0 9px; font-size:14px; line-height:1.35; }
+    .cv-entry:last-child { margin-bottom:0; }
+    .education { grid-column:1/span 2; }
+    .residency { grid-column:3/-1; }
+    .exhibitions { grid-column:1/-1; background:linear-gradient(135deg,#f4f0dd 0%,var(--amber) 58%,#9db678 100%); }
+    .entries { display:grid; grid-template-columns:1fr 1fr; gap:0 var(--gap); }
+    .exhibitions .cv-entry { padding-right:8px; }
+    @media (min-width:901px) { .exhibitions .cv-entry:nth-child(1) { margin-bottom:-7px; } }
+    .note { margin-top:18px; padding-top:12px; border-top:2px solid #000; font-size:12px; line-height:1.35; }
+    .footer { grid-column:1/-1; display:flex; justify-content:space-between; gap:20px; padding:12px; background:linear-gradient(90deg,rgba(239,239,239,.96),rgba(187,187,187,.86)); font-size:12px; }
+    @media (max-width:900px) {
+      .layout { display:block; width:100%; min-width:0; }
+      .sidebar { position:relative; width:100%; min-height:0; }
+      .identity { margin-bottom:18px; }
+      main { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; padding:var(--gap); }
+      .title,.back,.profile,.exhibitions,.footer { grid-column:1/-1; }
+      .education { grid-column:1; }
+      .residency { grid-column:2; }
+      .entries { grid-template-columns:1fr; }
+      h1 { font-size:clamp(70px,18vw,128px); }
+    }
+    @media (max-width:520px) {
+      main { grid-template-columns:1fr; }
+      .title,.back,.profile,.education,.residency,.exhibitions,.footer { grid-column:1; }
+      .entries { grid-template-columns:1fr; }
+      .back { text-align:left; }
+      .footer { flex-direction:column; }
+    }
+  </style>
 </head>
-<style>
-    body {
-        background-color: #000000;
-        background-image: url("https://seongsukim.github.io/bk.png");
-        background-repeat: repeat;
-        background-size: 30%
-    }
-    
-    div.background-module {
-        position: absolute;
-        z-index: 1;
-        top: 0px;
-        left: 0px;
-    }
-    
-    div.background_module_photo {
-        position: absolute;
-        z-index: 1;
-        top: 78px;
-        left: 0px;
-        width: 810px;
-        height: 723px;
-    }
-    
-    div.background_module_stripe {
-        position: fixed;
-        z-index: 2;
-        top: 0px;
-        left: 336px;
-        width: 324px;
-    }
-</style>
- <h1><span style="background-color:#FF00FF">CV</span></h1>
-    <div style="width: 260px;
-                background:
-                    
-                        #00FF00;
-                    
-                max-height: 517px;
-                overflow: auto; margin-bottom: 1px;">
-            <div style="padding: 12px;
-                    font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 25px; color: #000000;">
-
-                <p style="font-size: 14px; font-weight: bold; margin-bottom: 9px;">
-                    
-                </p>
-
 <body>
-    
-    <p>SEONGSU KIM</p>
-    <p>(b. 1988, Seoul, South Korea)</p>
-    <p>Lives and works in Glasgow, UK</p>
-    
-</div>
-</div>
-<br><br><br>
-<div style="width: 590px;
-                background:
-                    
-                        #00FF00;
-                    
-                max-height: 517px;
-                overflow: auto; margin-bottom: 1px;">
-            <div style="padding: 12px;
-                    font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 25px; color: #000000;">
-
-                <p style="font-size: 14px; font-weight: bold; margin-bottom: 9px;">
-                    
-                </p>
-    <p>EDUCATION</p>
-    <p>2020 Master of Fine Art , The Glasgow School of Art , Glasgow , United Kingdom</p>
-    <p>2017 Bachelor of Fine Art , Seoul Institute of The Arts , Seoul , Korea</p>
-    <p>2016 Department of Photography , Seoul Institute of The Arts , Seoul , Korea</p>
-</div>
-</div>
-
-<br><br><br>
-<div style="width: 680px;
-                background:
-                    
-                        #00FF00;
-                    
-                max-height: 517px;
-                overflow: auto; margin-bottom: 4px;">
-            <div style="padding: 12px;
-                    font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 25px; color: #000000;">
-
-                <p style="font-size: 14px; font-weight: bold; margin-bottom: 9px;">
-                    
-                </p>
-    <p>GROUP EXHIBITION</p>
-    <p>2023 May, House shows , GLASGOW , UNITED KINGDOM</p>
-    <p>2022 November, Nowhere Far Photography Exhibition , GLASGOW , UNITED KINGDOM</p>
-    <p>2019 November , MY TRUTH IS YOUR STORY , GLASGOW , UNITED KINGDOM </p>
-    <p>2019 October , LOOK Photo Biennial 2019 , LIVERPOOL , UNITED KINGDOM </p>
-    <p>2019 April , MFA Interim Show , GLASGOW , UNITED KINGDOM </p>
-    <p>2017 JULY , ASYAAF 2017 ( Asian Students Young Artists Art Festival ), SEOUL, SOUTH KOREA </p>
-    <p>2017 JULY , Art for Living Space , GYEONG-GI, SOUTH KOREA</p>
-    <p>2016 JULY , ASYAAF 2016 ( Asian Students Young Artists Art Festival ), SEOUL, SOUTH KOREA </p>
-    <p>2016 MARCH , YCK 2016 ( Young Creative Korea 2016 ), SEOUL, SOUTH KOREA </p>
-    <p>2015 JULY , ASYAAF 2015 ( Asian Students Young Artists Art Festival ), SEOUL, SOUTH KOREA</p>
-    <P>
-        
-    </P>
-    <P>RESIDENCY</P>
-    <P>2022 October, Peer to Peer , UNITED KINGDOM</P>
-     (online exchange programme betweet five Uk aritsts and five Hk artists)
-    </div>
-</div>
-
-
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="identity"><strong>SEONGSU KIM</strong>Visual artist</div>
+      <nav class="nav-box" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="CV.html" aria-current="page">CV</a>
+        <a href="pattern%20in%20flat.html">Pattern in Flat</a>
+        <a href="LINE.html">Line</a>
+        <a href="MARINE%20CAMP.html">Marine Camp</a>
+        <a href="Hwang.html">Hwang-Hak Village</a>
+        <a href="unknown%20dawn.html">Unknown Dawn</a>
+        <a href="Relationship.html">An Anonymous Relationship</a>
+        <a href="Amount-yale.html">The Amount of Dependence</a>
+        <a href="emergency.html">Emergency</a>
+        <a href="first-experience.html">First Experience</a>
+        <a href="publications-yale.html">Oorie</a>
+        <a href="space-man-yale.html">Space Man</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+    <main>
+      <header class="title"><h1>CV</h1></header>
+      <div class="back"><a href="index.html">Back to home</a></div>
+      <section class="profile" aria-labelledby="profile-heading">
+        <h2 id="profile-heading">SEONGSU KIM</h2>
+        <p>(b. 1988, Seoul, South Korea)</p>
+        <p>Lives and works in Glasgow, UK</p>
+      </section>
+      <section class="cv-section education" aria-labelledby="education-heading">
+        <h2 id="education-heading">Education</h2>
+        <p class="cv-entry">2020 Master of Fine Art, The Glasgow School of Art, Glasgow, United Kingdom</p>
+        <p class="cv-entry">2017 Bachelor of Fine Art, Seoul Institute of The Arts, Seoul, Korea</p>
+        <p class="cv-entry">2016 Department of Photography, Seoul Institute of The Arts, Seoul, Korea</p>
+      </section>
+      <section class="cv-section residency" aria-labelledby="residency-heading">
+        <h2 id="residency-heading">Residency</h2>
+        <p class="cv-entry">2022 October, Peer to Peer, United Kingdom</p>
+        <p class="note">(online exchange programme betweet five Uk aritsts and five Hk artists)</p>
+      </section>
+      <section class="cv-section exhibitions" aria-labelledby="exhibitions-heading">
+        <h2 id="exhibitions-heading">Group Exhibition</h2>
+        <div class="entries">
+          <p class="cv-entry">2026, Kyotographie, Kyoto, Japan</p>
+          <p class="cv-entry">2023 May, House shows, Glasgow, United Kingdom</p>
+          <p class="cv-entry">2022 November, Nowhere Far Photography Exhibition, Glasgow, United Kingdom</p>
+          <p class="cv-entry">2019 November, MY TRUTH IS YOUR STORY, Glasgow, United Kingdom</p>
+          <p class="cv-entry">2019 October, LOOK Photo Biennial 2019, Liverpool, United Kingdom</p>
+          <p class="cv-entry">2019 April, MFA Interim Show, Glasgow, United Kingdom</p>
+          <p class="cv-entry">2017 July, ASYAAF 2017 (Asian Students Young Artists Art Festival), Seoul, South Korea</p>
+          <p class="cv-entry">2017 July, Art for Living Space, Gyeong-gi, South Korea</p>
+          <p class="cv-entry">2016 July, ASYAAF 2016 (Asian Students Young Artists Art Festival), Seoul, South Korea</p>
+          <p class="cv-entry">2016 March, YCK 2016 (Young Creative Korea 2016), Seoul, South Korea</p>
+          <p class="cv-entry">2015 July, ASYAAF 2015 (Asian Students Young Artists Art Festival), Seoul, South Korea</p>
+        </div>
+      </section>
+      <footer class="footer">
+        <a href="index.html">All works</a>
+        <a href="pattern%20in%20flat.html">Next: Pattern in Flat →</a>
+      </footer>
+    </main>
+  </div>
 </body>
-
 </html>
-<style>
-@media (max-width: 900px) {
-    body { margin: 0 !important; padding: 10px !important; background-size: cover !important; }
-    img, iframe, video { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
-    div, span, p, h1, h2, h3, h4, h5, h6 { max-width: 100vw !important; box-sizing: border-box !important; }
-    div[style] { width: 100% !important; max-width: 100% !important; height: auto !important; max-height: none !important; }
-    .background_module_photo, .background-module, .background_module_stripe { position: relative !important; width: 100% !important; top: auto !important; left: auto !important; height: auto !important; }
-}
-</style>
